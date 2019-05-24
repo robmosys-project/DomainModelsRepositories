@@ -103,6 +103,7 @@ Structure of Communication Object:
 Structure of Communication Object:
 - id: UInt32 
 - roi: CommObjectRecognitionObjects::ROI 
+- color: CommObjectRecognitionObjects::Color 
 
 \class CommObjectRecognitionObjects::CommColorDetectionCore
 
@@ -124,6 +125,13 @@ Structure of Communication Object:
 - b: Double  = 0.0 
 - g: Double  = 0.0 
 - r: Double  = 0.0 
+
+\class CommObjectRecognitionObjects::HSVSpaceCore
+
+Structure of Communication Object:
+- h: Double  = 0.0 
+- s: Double  = 0.0 
+- v: Double  = 0.0 
 
 \class CommObjectRecognitionObjects::ROICore
 
@@ -278,6 +286,7 @@ Class Reference: CommObjectRecognitionObjects::CommObjectRelationCore
 @section CommObjectRecognitionInformation CommObjectRecognitionInformation
 - id: UInt32  
 - roi: @ref ROI (CommObj) 
+- color: @ref Color (CommObj) 
 
 Class Reference: CommObjectRecognitionObjects::CommObjectRecognitionInformationCore
 <hr>
@@ -300,6 +309,13 @@ Class Reference: CommObjectRecognitionObjects::ColorCore
 - r: Double   = 0.0 
 
 Class Reference: CommObjectRecognitionObjects::BGRSpaceCore
+<hr>
+@section HSVSpace HSVSpace
+- h: Double   = 0.0 
+- s: Double   = 0.0 
+- v: Double   = 0.0 
+
+Class Reference: CommObjectRecognitionObjects::HSVSpaceCore
 <hr>
 @section ROI ROI
 - point: @ref CommPoint2d (CommObj) 

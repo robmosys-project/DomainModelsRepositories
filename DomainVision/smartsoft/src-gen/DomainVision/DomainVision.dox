@@ -36,6 +36,7 @@ Structure of Communication Object:
 - max_distcance: Double 
 <i> in meter </i>
 - data: UInt8[*] 
+- scale: Double 
 - intrinsic_m: Double[*] 
 - extrinsic_m: Double[*] 
 <i> rotation[3][3] + translation[3] in single row </i>
@@ -138,6 +139,7 @@ Class Reference: DomainVision::ImageParametersCore
 - max_distcance: Double  
 <i> in meter </i>
 - data: UInt8[*]  
+- scale: Double  
 - intrinsic_m: Double[*]  
 - extrinsic_m: Double[*]  
 <i> rotation[3][3] + translation[3] in single row </i>

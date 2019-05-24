@@ -37,6 +37,7 @@ namespace DomainVisionIDL
 		double min_distcance;
 		double max_distcance;
 		CommDepthImage_data_type data;
+		double scale;
 		CommDepthImage_intrinsic_m_type intrinsic_m;
 		CommDepthImage_extrinsic_m_type extrinsic_m;
 		CommDepthImage_stereo_m_type stereo_m;

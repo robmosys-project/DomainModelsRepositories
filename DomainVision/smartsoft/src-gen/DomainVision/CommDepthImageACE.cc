@@ -37,6 +37,8 @@ ACE_CDR::Boolean operator<<(ACE_OutputCDR &cdr, const DomainVisionIDL::CommDepth
 	// serialize list-element data
 	good_bit = good_bit && cdr << ACE_Utils::truncate_cast<ACE_CDR::ULong>(data.data.size());
 	good_bit = good_bit && cdr.write_octet_array(data.data.data(), data.data.size());
+	// serialize list-element scale
+	good_bit = good_bit && cdr.write_double(data.scale);
 	// serialize list-element intrinsic_m
 	good_bit = good_bit && cdr << ACE_Utils::truncate_cast<ACE_CDR::ULong>(data.intrinsic_m.size());
 	good_bit = good_bit && cdr.write_double_array(data.intrinsic_m.data(), data.intrinsic_m.size());
@@ -80,6 +82,8 @@ ACE_CDR::Boolean operator>>(ACE_InputCDR &cdr, DomainVisionIDL::CommDepthImage &
 	good_bit = good_bit && cdr >> data_dataNbr;
 	data.data.resize(data_dataNbr);
 	good_bit = good_bit && cdr.read_octet_array(data.data.data(), data_dataNbr);
+	// deserialize type element scale
+	good_bit = good_bit && cdr.read_double(data.scale);
 	// deserialize list-type element intrinsic_m
 	ACE_CDR::ULong data_intrinsic_mNbr;
 	good_bit = good_bit && cdr >> data_intrinsic_mNbr;

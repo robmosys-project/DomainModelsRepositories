@@ -129,6 +129,10 @@ public:
 	}
 	inline void clearData() { idl_CommDepthImage.data.clear(); }
 	
+	// getter and setter for element Scale
+	inline double getScale() const { return idl_CommDepthImage.scale; }
+	inline CommDepthImageCore& setScale(const double &scale) { idl_CommDepthImage.scale = scale; return *this; }
+	
 	// getter and setter for element Intrinsic_m
 	/**
 	 * Getter methods for idl_CommDepthImage.intrinsic_m of type vector<double>

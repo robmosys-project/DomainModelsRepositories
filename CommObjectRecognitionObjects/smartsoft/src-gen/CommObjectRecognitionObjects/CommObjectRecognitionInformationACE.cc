@@ -15,6 +15,7 @@
 //--------------------------------------------------------------------------
 #include "CommObjectRecognitionObjects/CommObjectRecognitionInformationACE.hh"
 #include <ace/SString.h>
+#include "CommObjectRecognitionObjects/ColorACE.hh"
 #include "CommObjectRecognitionObjects/ROIACE.hh"
 
 // serialization operator for element CommObjectRecognitionInformation
@@ -25,6 +26,8 @@ ACE_CDR::Boolean operator<<(ACE_OutputCDR &cdr, const CommObjectRecognitionObjec
 	good_bit = good_bit && cdr.write_ulong(data.id);
 	// serialize list-element roi
 	good_bit = good_bit && cdr << data.roi;
+	// serialize list-element color
+	good_bit = good_bit && cdr << data.color;
 	
 	return good_bit;
 }
@@ -37,6 +40,8 @@ ACE_CDR::Boolean operator>>(ACE_InputCDR &cdr, CommObjectRecognitionObjectsIDL::
 	good_bit = good_bit && cdr.read_ulong(data.id);
 	// deserialize type element roi
 	good_bit = good_bit && cdr >> data.roi;
+	// deserialize type element color
+	good_bit = good_bit && cdr >> data.color;
 	
 	return good_bit;
 }

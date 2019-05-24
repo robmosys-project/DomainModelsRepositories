@@ -13,21 +13,19 @@
 // Please do not modify this file. It will be re-generated
 // running the code generator.
 //--------------------------------------------------------------------------
-#ifndef COMMOBJECTRECOGNITIONOBJECTS_COMMOBJECTRECOGNITIONINFORMATION_DATA_H_
-#define COMMOBJECTRECOGNITIONOBJECTS_COMMOBJECTRECOGNITIONINFORMATION_DATA_H_
+#ifndef COMMOBJECTRECOGNITIONOBJECTS_HSVSPACE_DATA_H_
+#define COMMOBJECTRECOGNITIONOBJECTS_HSVSPACE_DATA_H_
 
-#include "CommObjectRecognitionObjects/ColorData.hh"
-#include "CommObjectRecognitionObjects/ROIData.hh"
 
 
 namespace CommObjectRecognitionObjectsIDL 
 {
-	struct CommObjectRecognitionInformation
+	struct HSVSpace
 	{
-		unsigned int id;
-		CommObjectRecognitionObjectsIDL::ROI roi;
-		CommObjectRecognitionObjectsIDL::Color color;
+		double h;
+		double s;
+		double v;
   	};
 };
 
-#endif /* COMMOBJECTRECOGNITIONOBJECTS_COMMOBJECTRECOGNITIONINFORMATION_DATA_H_ */
+#endif /* COMMOBJECTRECOGNITIONOBJECTS_HSVSPACE_DATA_H_ */

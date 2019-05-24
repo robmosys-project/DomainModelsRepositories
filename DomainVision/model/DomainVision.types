@@ -97,6 +97,7 @@ CommObjectsRepository DomainVision version 1.0.0 {
 		max_distcance : Double
 				
 		data: UInt8[*]
+		scale: Double
 		intrinsic_m: Double[*]
 		/** rotation[3][3] + translation[3] in single row */
 		extrinsic_m: Double[*]

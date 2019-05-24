@@ -44,6 +44,8 @@ namespace CommObjectRecognitionObjects
 		hashes.push_back(getCompiledHash());
 		// get hash value(s) for CommObjectRecognitionObjects::ROI(idl_CommObjectRecognitionInformation.roi)
 		CommObjectRecognitionObjects::ROI::getAllHashValues(hashes);
+		// get hash value(s) for CommObjectRecognitionObjects::Color(idl_CommObjectRecognitionInformation.color)
+		CommObjectRecognitionObjects::Color::getAllHashValues(hashes);
 	}
 	
 	void CommObjectRecognitionInformationCore::checkAllHashValues(std::list<std::string> &hashes)
@@ -63,6 +65,8 @@ namespace CommObjectRecognitionObjects
 		
 		// check hash value(s) for CommObjectRecognitionObjects::ROI(idl_CommObjectRecognitionInformation.roi)
 		CommObjectRecognitionObjects::ROI::checkAllHashValues(hashes);
+		// check hash value(s) for CommObjectRecognitionObjects::Color(idl_CommObjectRecognitionInformation.color)
+		CommObjectRecognitionObjects::Color::checkAllHashValues(hashes);
 	}
 	
 	#ifdef ENABLE_HASH
@@ -72,6 +76,7 @@ namespace CommObjectRecognitionObjects
 		
 		boost::hash_combine(seed, data.id);
 		seed += CommObjectRecognitionObjects::ROI::generateDataHash(data.roi);
+		seed += CommObjectRecognitionObjects::Color::generateDataHash(data.color);
 		
 		return seed;
 	}
@@ -83,6 +88,7 @@ namespace CommObjectRecognitionObjects
 	{  
 		setId(0);
 		setRoi(CommObjectRecognitionObjects::ROI());
+		setColor(CommObjectRecognitionObjects::Color());
 	}
 	
 	CommObjectRecognitionInformationCore::CommObjectRecognitionInformationCore(const DATATYPE &data)
@@ -97,6 +103,7 @@ namespace CommObjectRecognitionObjects
 	  os << "CommObjectRecognitionInformation(";
 	  os << getId() << " ";
 	  getRoi().to_ostream(os);
+	  getColor().to_ostream(os);
 	  os << ") ";
 	}
 	
@@ -106,12 +113,16 @@ namespace CommObjectRecognitionObjects
 		os << indent << "<roi>";
 		getRoi().to_xml(os, indent);
 		os << indent << "</roi>";
+		os << indent << "<color>";
+		getColor().to_xml(os, indent);
+		os << indent << "</color>";
 	}
 	
 	// restore from xml stream
 	void CommObjectRecognitionInformationCore::from_xml(std::istream &is) {
 		static const Smart::KnuthMorrisPratt kmp_id("<id>");
 		static const Smart::KnuthMorrisPratt kmp_roi("<roi>");
+		static const Smart::KnuthMorrisPratt kmp_color("<color>");
 		
 		if(kmp_id.search(is)) {
 			unsigned int idItem;
@@ -122,6 +133,11 @@ namespace CommObjectRecognitionObjects
 			CommObjectRecognitionObjects::ROI roiItem;
 			roiItem.from_xml(is);
 			setRoi(roiItem);
+		}
+		if(kmp_color.search(is)) {
+			CommObjectRecognitionObjects::Color colorItem;
+			colorItem.from_xml(is);
+			setColor(colorItem);
 		}
 	}
 	

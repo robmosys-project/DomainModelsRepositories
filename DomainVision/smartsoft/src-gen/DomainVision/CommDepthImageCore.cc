@@ -76,6 +76,7 @@ namespace DomainVision
 		for(data_dataIt=data.data.begin(); data_dataIt!=data.data.end(); data_dataIt++) {
 			boost::hash_combine(seed, *data_dataIt);
 		}
+		boost::hash_combine(seed, data.scale);
 		std::vector<ACE_CDR::Double>::const_iterator data_intrinsic_mIt;
 		for(data_intrinsic_mIt=data.intrinsic_m.begin(); data_intrinsic_mIt!=data.intrinsic_m.end(); data_intrinsic_mIt++) {
 			boost::hash_combine(seed, *data_intrinsic_mIt);
@@ -111,6 +112,7 @@ namespace DomainVision
 		setMin_distcance(0.0);
 		setMax_distcance(0.0);
 		setData(std::vector<unsigned char>());
+		setScale(0.0);
 		setIntrinsic_m(std::vector<double>());
 		setExtrinsic_m(std::vector<double>());
 		setStereo_m(std::vector<double>());
@@ -141,6 +143,7 @@ namespace DomainVision
 	  for(dataIt=dataList.begin(); dataIt!=dataList.end(); dataIt++) {
 	  	os << *dataIt << " ";
 	  }
+	  os << getScale() << " ";
 	  std::vector<double>::const_iterator intrinsic_mIt;
 	  std::vector<double> intrinsic_mList = getIntrinsic_mCopy();
 	  for(intrinsic_mIt=intrinsic_mList.begin(); intrinsic_mIt!=intrinsic_mList.end(); intrinsic_mIt++) {
@@ -187,6 +190,7 @@ namespace DomainVision
 			os << indent << "<data i=\"" << counter++ << "\">" << *dataIt << "</data>";
 		}
 		os << indent << "</dataList>";
+		os << indent << "<scale>" << getScale() << "</scale>";
 		std::vector<double>::const_iterator intrinsic_mIt;
 		std::vector<double> intrinsic_mList = getIntrinsic_mCopy();
 		counter = 0;
@@ -238,6 +242,7 @@ namespace DomainVision
 		static const Smart::KnuthMorrisPratt kmp_max_distcance("<max_distcance>");
 		static const Smart::KnuthMorrisPratt kmp_dataList("<dataList n=\"");
 		static const Smart::KnuthMorrisPratt kmp_data("\">");
+		static const Smart::KnuthMorrisPratt kmp_scale("<scale>");
 		static const Smart::KnuthMorrisPratt kmp_intrinsic_mList("<intrinsic_mList n=\"");
 		static const Smart::KnuthMorrisPratt kmp_intrinsic_m("\">");
 		static const Smart::KnuthMorrisPratt kmp_extrinsic_mList("<extrinsic_mList n=\"");
@@ -293,6 +298,11 @@ namespace DomainVision
 				}
 			}
 			setData(dataList);
+		}
+		if(kmp_scale.search(is)) {
+			double scaleItem;
+			is >> scaleItem;
+			setScale(scaleItem);
 		}
 		if(kmp_intrinsic_mList.search(is)) {
 			size_t numberElements;
