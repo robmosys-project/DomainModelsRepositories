@@ -17,7 +17,7 @@
 #define COMMOBJECTRECOGNITIONOBJECTS_COLOR_CORE_H_
 
 #include "CommObjectRecognitionObjects/ColorData.hh"
-#include "CommObjectRecognitionObjects/BGRSpace.hh"
+#include "CommObjectRecognitionObjects/HSVSpace.hh"
 #include "CommObjectRecognitionObjects/enumColors.hh"
 
 #include <iostream>
@@ -71,12 +71,12 @@ public:
 	inline ColorCore& setName(const CommObjectRecognitionObjects::Colors &name) { idl_Color.name = name; return *this; }
 	
 	// getter and setter for element Min_range
-	inline CommObjectRecognitionObjects::BGRSpace getMin_range() const { return CommObjectRecognitionObjects::BGRSpace(idl_Color.min_range); }
-	inline ColorCore& setMin_range(const CommObjectRecognitionObjects::BGRSpace &min_range) { idl_Color.min_range = min_range; return *this; }
+	inline CommObjectRecognitionObjects::HSVSpace getMin_range() const { return CommObjectRecognitionObjects::HSVSpace(idl_Color.min_range); }
+	inline ColorCore& setMin_range(const CommObjectRecognitionObjects::HSVSpace &min_range) { idl_Color.min_range = min_range; return *this; }
 	
 	// getter and setter for element Max_range
-	inline CommObjectRecognitionObjects::BGRSpace getMax_range() const { return CommObjectRecognitionObjects::BGRSpace(idl_Color.max_range); }
-	inline ColorCore& setMax_range(const CommObjectRecognitionObjects::BGRSpace &max_range) { idl_Color.max_range = max_range; return *this; }
+	inline CommObjectRecognitionObjects::HSVSpace getMax_range() const { return CommObjectRecognitionObjects::HSVSpace(idl_Color.max_range); }
+	inline ColorCore& setMax_range(const CommObjectRecognitionObjects::HSVSpace &max_range) { idl_Color.max_range = max_range; return *this; }
 };
 
 } /* namespace CommObjectRecognitionObjects */

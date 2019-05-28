@@ -16,7 +16,7 @@
 #ifndef COMMOBJECTRECOGNITIONOBJECTS_COLOR_DATA_H_
 #define COMMOBJECTRECOGNITIONOBJECTS_COLOR_DATA_H_
 
-#include "CommObjectRecognitionObjects/BGRSpaceData.hh"
+#include "CommObjectRecognitionObjects/HSVSpaceData.hh"
 #include "CommObjectRecognitionObjects/enumColorsData.hh"
 
 
@@ -25,8 +25,8 @@ namespace CommObjectRecognitionObjectsIDL
 	struct Color
 	{
 		CommObjectRecognitionObjectsIDL::Colors name;
-		CommObjectRecognitionObjectsIDL::BGRSpace min_range;
-		CommObjectRecognitionObjectsIDL::BGRSpace max_range;
+		CommObjectRecognitionObjectsIDL::HSVSpace min_range;
+		CommObjectRecognitionObjectsIDL::HSVSpace max_range;
   	};
 };
 

@@ -116,8 +116,8 @@ Structure of Communication Object:
 
 Structure of Communication Object:
 - name: CommObjectRecognitionObjects::Colors 
-- min_range: CommObjectRecognitionObjects::BGRSpace 
-- max_range: CommObjectRecognitionObjects::BGRSpace 
+- min_range: CommObjectRecognitionObjects::HSVSpace 
+- max_range: CommObjectRecognitionObjects::HSVSpace 
 
 \class CommObjectRecognitionObjects::BGRSpaceCore
 
@@ -298,8 +298,8 @@ Class Reference: CommObjectRecognitionObjects::CommColorDetectionCore
 <hr>
 @section Color Color
 - name: @ref Colors (Enum) 
-- min_range: @ref BGRSpace (CommObj) 
-- max_range: @ref BGRSpace (CommObj) 
+- min_range: @ref HSVSpace (CommObj) 
+- max_range: @ref HSVSpace (CommObj) 
 
 Class Reference: CommObjectRecognitionObjects::ColorCore
 <hr>

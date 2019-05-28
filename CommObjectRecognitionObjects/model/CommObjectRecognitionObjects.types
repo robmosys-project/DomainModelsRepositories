@@ -125,8 +125,8 @@ CommObjectsRepository CommObjectRecognitionObjects version 1.0 {
 	CommObject Color {
 		//TODO with multiple ranges
 		name: Colors
-		min_range: BGRSpace
-		max_range: BGRSpace
+		min_range: HSVSpace
+		max_range: HSVSpace
 	}
 	
 	Enumeration Colors {

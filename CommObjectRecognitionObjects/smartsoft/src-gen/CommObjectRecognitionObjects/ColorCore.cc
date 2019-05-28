@@ -42,10 +42,10 @@ namespace CommObjectRecognitionObjects
 	{
 		// get own hash value
 		hashes.push_back(getCompiledHash());
-		// get hash value(s) for CommObjectRecognitionObjects::BGRSpace(idl_Color.min_range)
-		CommObjectRecognitionObjects::BGRSpace::getAllHashValues(hashes);
-		// get hash value(s) for CommObjectRecognitionObjects::BGRSpace(idl_Color.max_range)
-		CommObjectRecognitionObjects::BGRSpace::getAllHashValues(hashes);
+		// get hash value(s) for CommObjectRecognitionObjects::HSVSpace(idl_Color.min_range)
+		CommObjectRecognitionObjects::HSVSpace::getAllHashValues(hashes);
+		// get hash value(s) for CommObjectRecognitionObjects::HSVSpace(idl_Color.max_range)
+		CommObjectRecognitionObjects::HSVSpace::getAllHashValues(hashes);
 	}
 	
 	void ColorCore::checkAllHashValues(std::list<std::string> &hashes)
@@ -63,10 +63,10 @@ namespace CommObjectRecognitionObjects
 		assert(strcmp(getCompiledHash(), hashes.front().c_str()) == 0);
 		hashes.pop_front();
 		
-		// check hash value(s) for CommObjectRecognitionObjects::BGRSpace(idl_Color.min_range)
-		CommObjectRecognitionObjects::BGRSpace::checkAllHashValues(hashes);
-		// check hash value(s) for CommObjectRecognitionObjects::BGRSpace(idl_Color.max_range)
-		CommObjectRecognitionObjects::BGRSpace::checkAllHashValues(hashes);
+		// check hash value(s) for CommObjectRecognitionObjects::HSVSpace(idl_Color.min_range)
+		CommObjectRecognitionObjects::HSVSpace::checkAllHashValues(hashes);
+		// check hash value(s) for CommObjectRecognitionObjects::HSVSpace(idl_Color.max_range)
+		CommObjectRecognitionObjects::HSVSpace::checkAllHashValues(hashes);
 	}
 	
 	#ifdef ENABLE_HASH
@@ -75,8 +75,8 @@ namespace CommObjectRecognitionObjects
 		size_t seed = 0;
 		
 		boost::hash_combine(seed, data.name);
-		seed += CommObjectRecognitionObjects::BGRSpace::generateDataHash(data.min_range);
-		seed += CommObjectRecognitionObjects::BGRSpace::generateDataHash(data.max_range);
+		seed += CommObjectRecognitionObjects::HSVSpace::generateDataHash(data.min_range);
+		seed += CommObjectRecognitionObjects::HSVSpace::generateDataHash(data.max_range);
 		
 		return seed;
 	}
@@ -87,8 +87,8 @@ namespace CommObjectRecognitionObjects
 	:	idl_Color()
 	{  
 		setName(CommObjectRecognitionObjects::Colors());
-		setMin_range(CommObjectRecognitionObjects::BGRSpace());
-		setMax_range(CommObjectRecognitionObjects::BGRSpace());
+		setMin_range(CommObjectRecognitionObjects::HSVSpace());
+		setMax_range(CommObjectRecognitionObjects::HSVSpace());
 	}
 	
 	ColorCore::ColorCore(const DATATYPE &data)
@@ -132,12 +132,12 @@ namespace CommObjectRecognitionObjects
 			setName(nameItem);
 		}
 		if(kmp_min_range.search(is)) {
-			CommObjectRecognitionObjects::BGRSpace min_rangeItem;
+			CommObjectRecognitionObjects::HSVSpace min_rangeItem;
 			min_rangeItem.from_xml(is);
 			setMin_range(min_rangeItem);
 		}
 		if(kmp_max_range.search(is)) {
-			CommObjectRecognitionObjects::BGRSpace max_rangeItem;
+			CommObjectRecognitionObjects::HSVSpace max_rangeItem;
 			max_rangeItem.from_xml(is);
 			setMax_range(max_rangeItem);
 		}

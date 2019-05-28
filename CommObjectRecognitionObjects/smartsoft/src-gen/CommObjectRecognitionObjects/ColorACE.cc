@@ -15,8 +15,8 @@
 //--------------------------------------------------------------------------
 #include "CommObjectRecognitionObjects/ColorACE.hh"
 #include <ace/SString.h>
+#include "CommObjectRecognitionObjects/HSVSpaceACE.hh"
 #include "CommObjectRecognitionObjects/enumColorsData.hh"
-#include "CommObjectRecognitionObjects/BGRSpaceACE.hh"
 
 // serialization operator for element Color
 ACE_CDR::Boolean operator<<(ACE_OutputCDR &cdr, const CommObjectRecognitionObjectsIDL::Color &data)
