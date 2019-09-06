@@ -13,10 +13,10 @@
 // Please do not modify this file. It will be re-generated
 // running the code generator.
 //--------------------------------------------------------------------------
-#ifndef COMMOBJECTRECOGNITIONOBJECTS_COLORS_ENUM_H_
-#define COMMOBJECTRECOGNITIONOBJECTS_COLORS_ENUM_H_
+#ifndef COMMPERCEPTION_COLORS_ENUM_H_
+#define COMMPERCEPTION_COLORS_ENUM_H_
 
-#include <CommObjectRecognitionObjects/enumColorsData.hh>
+#include <CommPerception/enumColorsData.hh>
 
 #include <string>
 #include <iostream>
@@ -24,11 +24,11 @@
 // SmartUtils used in from_xml method
 #include "smartKnuthMorrisPratt.hh"
 
-namespace CommObjectRecognitionObjects {
+namespace CommPerception {
 	
 	class Colors {
 	private:
-		CommObjectRecognitionObjectsIDL::Colors value;
+		CommPerceptionIDL::Colors value;
 		
 	public:
 		enum ENUM_Colors {
@@ -51,11 +51,11 @@ namespace CommObjectRecognitionObjects {
 		}
 		
 		// copy constructor for IDL type
-		Colors(CommObjectRecognitionObjectsIDL::Colors e) {
+		Colors(CommPerceptionIDL::Colors e) {
 			value = e;
 		}
 		
-		//const CommObjectRecognitionObjectsIDL::Colors& get() const { return value; }
+		//const CommPerceptionIDL::Colors& get() const { return value; }
 		
 		// ENUM operator
 		operator ENUM_Colors() const {

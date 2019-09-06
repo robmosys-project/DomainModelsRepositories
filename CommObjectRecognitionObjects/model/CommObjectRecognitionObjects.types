@@ -111,6 +111,13 @@ CommObjectsRepository CommObjectRecognitionObjects version 1.0 {
 		id: UInt32
 		roi: ROI
 		color: Color
+		shape: Shape
+	}
+
+	CommObject CommInfDetection {
+		shape: Shape
+		color: Color
+		roi: ROI
 	}
 	
 	CommObject CommColorDetection {
@@ -118,42 +125,6 @@ CommObjectsRepository CommObjectRecognitionObjects version 1.0 {
 		roi: ROI
 	}
 	
-		/*
-		 * "Basic Perception"
-		 */
-		 
-	CommObject Color {
-		//TODO with multiple ranges
-		name: Colors
-		min_range: HSVSpace
-		max_range: HSVSpace
-	}
-	
-	Enumeration Colors {
-		RED
-		BLUE
-		WHITE
-		GRAY
-	}	
-	CommObject BGRSpace {
-		b: Double = 0.0
-		g: Double = 0.0
-		r: Double = 0.0
-	}
-	CommObject HSVSpace {
-		//OpenCV range : H: 0 - 180, S: 0 - 255, V: 0 - 255
-		h: Double = 0.0
-		s: Double = 0.0
-		v: Double = 0.0
-	}
-	CommObject ROI {
-		point: CommPoint2d
-		width: Double = 0.0
-		height: Double = 0.0
-	}
-	CommObject CommPoint2d {
-		x: Double = 0.0
-		y: Double = 0.0
-	}
+
 	
 }

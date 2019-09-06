@@ -46,6 +46,8 @@ namespace CommObjectRecognitionObjects
 		CommObjectRecognitionObjects::ROI::getAllHashValues(hashes);
 		// get hash value(s) for CommObjectRecognitionObjects::Color(idl_CommObjectRecognitionInformation.color)
 		CommObjectRecognitionObjects::Color::getAllHashValues(hashes);
+		// get hash value(s) for CommObjectRecognitionObjects::Shape(idl_CommObjectRecognitionInformation.shape)
+		CommObjectRecognitionObjects::Shape::getAllHashValues(hashes);
 	}
 	
 	void CommObjectRecognitionInformationCore::checkAllHashValues(std::list<std::string> &hashes)
@@ -67,6 +69,8 @@ namespace CommObjectRecognitionObjects
 		CommObjectRecognitionObjects::ROI::checkAllHashValues(hashes);
 		// check hash value(s) for CommObjectRecognitionObjects::Color(idl_CommObjectRecognitionInformation.color)
 		CommObjectRecognitionObjects::Color::checkAllHashValues(hashes);
+		// check hash value(s) for CommObjectRecognitionObjects::Shape(idl_CommObjectRecognitionInformation.shape)
+		CommObjectRecognitionObjects::Shape::checkAllHashValues(hashes);
 	}
 	
 	#ifdef ENABLE_HASH
@@ -77,6 +81,7 @@ namespace CommObjectRecognitionObjects
 		boost::hash_combine(seed, data.id);
 		seed += CommObjectRecognitionObjects::ROI::generateDataHash(data.roi);
 		seed += CommObjectRecognitionObjects::Color::generateDataHash(data.color);
+		seed += CommObjectRecognitionObjects::Shape::generateDataHash(data.shape);
 		
 		return seed;
 	}
@@ -89,6 +94,7 @@ namespace CommObjectRecognitionObjects
 		setId(0);
 		setRoi(CommObjectRecognitionObjects::ROI());
 		setColor(CommObjectRecognitionObjects::Color());
+		setShape(CommObjectRecognitionObjects::Shape());
 	}
 	
 	CommObjectRecognitionInformationCore::CommObjectRecognitionInformationCore(const DATATYPE &data)
@@ -104,6 +110,7 @@ namespace CommObjectRecognitionObjects
 	  os << getId() << " ";
 	  getRoi().to_ostream(os);
 	  getColor().to_ostream(os);
+	  getShape().to_ostream(os);
 	  os << ") ";
 	}
 	
@@ -116,6 +123,9 @@ namespace CommObjectRecognitionObjects
 		os << indent << "<color>";
 		getColor().to_xml(os, indent);
 		os << indent << "</color>";
+		os << indent << "<shape>";
+		getShape().to_xml(os, indent);
+		os << indent << "</shape>";
 	}
 	
 	// restore from xml stream
@@ -123,6 +133,7 @@ namespace CommObjectRecognitionObjects
 		static const Smart::KnuthMorrisPratt kmp_id("<id>");
 		static const Smart::KnuthMorrisPratt kmp_roi("<roi>");
 		static const Smart::KnuthMorrisPratt kmp_color("<color>");
+		static const Smart::KnuthMorrisPratt kmp_shape("<shape>");
 		
 		if(kmp_id.search(is)) {
 			unsigned int idItem;
@@ -138,6 +149,11 @@ namespace CommObjectRecognitionObjects
 			CommObjectRecognitionObjects::Color colorItem;
 			colorItem.from_xml(is);
 			setColor(colorItem);
+		}
+		if(kmp_shape.search(is)) {
+			CommObjectRecognitionObjects::Shape shapeItem;
+			shapeItem.from_xml(is);
+			setShape(shapeItem);
 		}
 	}
 	

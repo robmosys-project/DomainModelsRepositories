@@ -19,6 +19,7 @@
 #include "CommObjectRecognitionObjects/CommObjectRecognitionInformationData.hh"
 #include "CommObjectRecognitionObjects/Color.hh"
 #include "CommObjectRecognitionObjects/ROI.hh"
+#include "CommObjectRecognitionObjects/Shape.hh"
 
 #include <iostream>
 #include <string>
@@ -77,6 +78,10 @@ public:
 	// getter and setter for element Color
 	inline CommObjectRecognitionObjects::Color getColor() const { return CommObjectRecognitionObjects::Color(idl_CommObjectRecognitionInformation.color); }
 	inline CommObjectRecognitionInformationCore& setColor(const CommObjectRecognitionObjects::Color &color) { idl_CommObjectRecognitionInformation.color = color; return *this; }
+	
+	// getter and setter for element Shape
+	inline CommObjectRecognitionObjects::Shape getShape() const { return CommObjectRecognitionObjects::Shape(idl_CommObjectRecognitionInformation.shape); }
+	inline CommObjectRecognitionInformationCore& setShape(const CommObjectRecognitionObjects::Shape &shape) { idl_CommObjectRecognitionInformation.shape = shape; return *this; }
 };
 
 } /* namespace CommObjectRecognitionObjects */

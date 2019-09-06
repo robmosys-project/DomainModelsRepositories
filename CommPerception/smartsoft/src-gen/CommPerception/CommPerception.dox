@@ -1,0 +1,172 @@
+/** 
+\class CommPerception::CommInfDetectionCore
+
+Structure of Communication Object:
+- shape: CommPerception::Shape 
+- color: CommPerception::Color 
+- roi: CommPerception::ROI 
+
+\class CommPerception::CommObjectRecognitionObjectPropertiesCore
+
+Structure of Communication Object:
+- is_valid: Boolean  = false 
+- object_id: UInt32 
+- object_type: String 
+- pose: CommBasicObjects::CommPose3d 
+- dimension: CommBasicObjects::CommPosition3d 
+- beliefs: CommObjectRecognitionObjects::CommObjectBelief[*] 
+- mesh: CommObjectRecognitionObjects::CommTriMesh 
+- relations: CommObjectRecognitionObjects::CommObjectRelation[*] 
+- fill_level: Double  = -1.0 
+- objectSurfacePoses: CommBasicObjects::CommPose3d[*] 
+<i> "Used for grasping at an surface of the object" </i>
+
+\class CommPerception::ShapeCore
+
+Structure of Communication Object:
+- name: CommPerception::Shapes  = UNDEFINED 
+
+\class CommPerception::ColorCore
+
+Structure of Communication Object:
+- name: CommPerception::Colors 
+- min_range: CommPerception::HSVSpace 
+- max_range: CommPerception::HSVSpace 
+
+\class CommPerception::BGRSpaceCore
+
+Structure of Communication Object:
+- b: Double  = 0.0 
+- g: Double  = 0.0 
+- r: Double  = 0.0 
+
+\class CommPerception::HSVSpaceCore
+
+Structure of Communication Object:
+- h: Double  = 0.0 
+- s: Double  = 0.0 
+- v: Double  = 0.0 
+
+\class CommPerception::ROICore
+
+Structure of Communication Object:
+- point: CommPerception::CommPoint2d 
+- width: Double  = 0.0 
+- height: Double  = 0.0 
+
+\class CommPerception::CommPoint2dCore
+
+Structure of Communication Object:
+- x: Double  = 0.0 
+- y: Double  = 0.0 
+
+\class CommPerception::Shapes
+
+Structure of Enumeration:
+- UNDEFINED 
+- SPHERE 
+- CUBE 
+- CYLINDER 
+
+\class CommPerception::Colors
+
+Structure of Enumeration:
+- UNDEFINED 
+- RED 
+- BLUE 
+- WHITE 
+- GRAY 
+
+
+
+
+@defgroup CommPerception
+@ingroup commObjGroup
+@{
+\page CommPerceptionPage CommPerception
+Class Reference: CommPerception
+<hr>
+
+@section CommInfDetection CommInfDetection
+- shape: @ref Shape (CommObj) 
+- color: @ref Color (CommObj) 
+- roi: @ref ROI (CommObj) 
+
+Class Reference: CommPerception::CommInfDetectionCore
+<hr>
+@section CommObjectRecognitionObjectProperties CommObjectRecognitionObjectProperties
+- is_valid: Boolean   = false 
+- object_id: UInt32  
+- object_type: String  
+- pose: @ref CommPose3d (CommObj) 
+- dimension: @ref CommPosition3d (CommObj) 
+- beliefs: @ref CommObjectBelief[*] (CommObj) 
+- mesh: @ref CommTriMesh (CommObj) 
+- relations: @ref CommObjectRelation[*] (CommObj) 
+- fill_level: Double   = -1.0 
+- objectSurfacePoses: @ref CommPose3d[*] (CommObj) 
+<i> "Used for grasping at an surface of the object" </i>
+
+Class Reference: CommPerception::CommObjectRecognitionObjectPropertiesCore
+<hr>
+@section Shape Shape
+- name: @ref Shapes (Enum)  = UNDEFINED 
+
+Class Reference: CommPerception::ShapeCore
+<hr>
+@section Color Color
+- name: @ref Colors (Enum) 
+- min_range: @ref HSVSpace (CommObj) 
+- max_range: @ref HSVSpace (CommObj) 
+
+Class Reference: CommPerception::ColorCore
+<hr>
+@section BGRSpace BGRSpace
+- b: Double   = 0.0 
+- g: Double   = 0.0 
+- r: Double   = 0.0 
+
+Class Reference: CommPerception::BGRSpaceCore
+<hr>
+@section HSVSpace HSVSpace
+- h: Double   = 0.0 
+- s: Double   = 0.0 
+- v: Double   = 0.0 
+
+Class Reference: CommPerception::HSVSpaceCore
+<hr>
+@section ROI ROI
+- point: @ref CommPoint2d (CommObj) 
+- width: Double   = 0.0 
+- height: Double   = 0.0 
+
+Class Reference: CommPerception::ROICore
+<hr>
+@section CommPoint2d CommPoint2d
+- x: Double   = 0.0 
+- y: Double   = 0.0 
+
+Class Reference: CommPerception::CommPoint2dCore
+<hr>
+@section Shapes Shapes
+- UNDEFINED 
+- SPHERE 
+- CUBE 
+- CYLINDER 
+
+Class Reference: CommPerception::Shapes
+<hr>
+@section Colors Colors
+- UNDEFINED 
+- RED 
+- BLUE 
+- WHITE 
+- GRAY 
+
+Class Reference: CommPerception::Colors
+<hr>
+
+
+@}
+*/
+

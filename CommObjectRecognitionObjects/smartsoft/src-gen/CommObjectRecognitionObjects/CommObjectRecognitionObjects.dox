@@ -104,6 +104,14 @@ Structure of Communication Object:
 - id: UInt32 
 - roi: CommObjectRecognitionObjects::ROI 
 - color: CommObjectRecognitionObjects::Color 
+- shape: CommObjectRecognitionObjects::Shape 
+
+\class CommObjectRecognitionObjects::CommInfDetectionCore
+
+Structure of Communication Object:
+- shape: CommObjectRecognitionObjects::Shape 
+- color: CommObjectRecognitionObjects::Color 
+- roi: CommObjectRecognitionObjects::ROI 
 
 \class CommObjectRecognitionObjects::CommColorDetectionCore
 
@@ -111,8 +119,13 @@ Structure of Communication Object:
 - color: CommObjectRecognitionObjects::Color 
 - roi: CommObjectRecognitionObjects::ROI 
 
-\class CommObjectRecognitionObjects::ColorCore
+\class CommObjectRecognitionObjects::ShapeCore
 "Basic Perception"
+
+Structure of Communication Object:
+- name: CommObjectRecognitionObjects::Shapes  = UNDEFINED 
+
+\class CommObjectRecognitionObjects::ColorCore
 
 Structure of Communication Object:
 - name: CommObjectRecognitionObjects::Colors 
@@ -166,9 +179,18 @@ Structure of Enumeration:
 - OBJECT_FOUND 
 - OBJECT_NOT_FOUND 
 
+\class CommObjectRecognitionObjects::Shapes
+
+Structure of Enumeration:
+- UNDEFINED 
+- SPHERE 
+- CUBE 
+- CYLINDER 
+
 \class CommObjectRecognitionObjects::Colors
 
 Structure of Enumeration:
+- UNDEFINED 
 - RED 
 - BLUE 
 - WHITE 
@@ -287,14 +309,27 @@ Class Reference: CommObjectRecognitionObjects::CommObjectRelationCore
 - id: UInt32  
 - roi: @ref ROI (CommObj) 
 - color: @ref Color (CommObj) 
+- shape: @ref Shape (CommObj) 
 
 Class Reference: CommObjectRecognitionObjects::CommObjectRecognitionInformationCore
+<hr>
+@section CommInfDetection CommInfDetection
+- shape: @ref Shape (CommObj) 
+- color: @ref Color (CommObj) 
+- roi: @ref ROI (CommObj) 
+
+Class Reference: CommObjectRecognitionObjects::CommInfDetectionCore
 <hr>
 @section CommColorDetection CommColorDetection
 - color: @ref Color (CommObj) 
 - roi: @ref ROI (CommObj) 
 
 Class Reference: CommObjectRecognitionObjects::CommColorDetectionCore
+<hr>
+@section Shape Shape
+- name: @ref Shapes (Enum)  = UNDEFINED 
+
+Class Reference: CommObjectRecognitionObjects::ShapeCore
 <hr>
 @section Color Color
 - name: @ref Colors (Enum) 
@@ -350,7 +385,16 @@ Class Reference: CommObjectRecognitionObjects::RelationType
 
 Class Reference: CommObjectRecognitionObjects::SimpleObjectState
 <hr>
+@section Shapes Shapes
+- UNDEFINED 
+- SPHERE 
+- CUBE 
+- CYLINDER 
+
+Class Reference: CommObjectRecognitionObjects::Shapes
+<hr>
 @section Colors Colors
+- UNDEFINED 
 - RED 
 - BLUE 
 - WHITE 

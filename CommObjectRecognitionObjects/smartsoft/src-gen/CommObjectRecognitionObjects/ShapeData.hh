@@ -13,23 +13,18 @@
 // Please do not modify this file. It will be re-generated
 // running the code generator.
 //--------------------------------------------------------------------------
-#ifndef COMMOBJECTRECOGNITIONOBJECTS_COMMOBJECTRECOGNITIONINFORMATION_DATA_H_
-#define COMMOBJECTRECOGNITIONOBJECTS_COMMOBJECTRECOGNITIONINFORMATION_DATA_H_
+#ifndef COMMOBJECTRECOGNITIONOBJECTS_SHAPE_DATA_H_
+#define COMMOBJECTRECOGNITIONOBJECTS_SHAPE_DATA_H_
 
-#include "CommObjectRecognitionObjects/ShapeData.hh"
-#include "CommObjectRecognitionObjects/ColorData.hh"
-#include "CommObjectRecognitionObjects/ROIData.hh"
+#include "CommObjectRecognitionObjects/enumShapesData.hh"
 
 
 namespace CommObjectRecognitionObjectsIDL 
 {
-	struct CommObjectRecognitionInformation
+	struct Shape
 	{
-		unsigned int id;
-		CommObjectRecognitionObjectsIDL::ROI roi;
-		CommObjectRecognitionObjectsIDL::Color color;
-		CommObjectRecognitionObjectsIDL::Shape shape;
+		CommObjectRecognitionObjectsIDL::Shapes name;
   	};
 };
 
-#endif /* COMMOBJECTRECOGNITIONOBJECTS_COMMOBJECTRECOGNITIONINFORMATION_DATA_H_ */
+#endif /* COMMOBJECTRECOGNITIONOBJECTS_SHAPE_DATA_H_ */

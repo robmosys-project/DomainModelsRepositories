@@ -1,6 +1,6 @@
 ServiceDefRepository CommObjectRecognitionObjects version 1.0 {
 	
-	RequestAnswerServiceDefinition ObjectQueryService {
+	RequestAnswerServiceDefinition ObjectQueryService2 {
 		QueryPattern <
 			RequestType = CommObjectRecognitionObjects.CommObjectRecognitionId
 			AnswerType = CommObjectRecognitionObjects.CommObjectRecognitionObjectProperties
@@ -28,7 +28,12 @@ ServiceDefRepository CommObjectRecognitionObjects version 1.0 {
 			AnswerType = CommObjectRecognitionObjects.CommPoint2d
 		>
 	}
-	
+	RequestAnswerServiceDefinition ObjectQueryService {
+		QueryPattern <
+			RequestType = CommObjectRecognitionObjects.CommInfDetection
+			AnswerType = CommObjectRecognitionObjects.CommObjectRecognitionObjectProperties
+		>
+	}	
 	ForkingServiceDefinition ObjectEventService {
 		EventPattern < 
 			ActivationType=CommBasicObjects.CommVoid

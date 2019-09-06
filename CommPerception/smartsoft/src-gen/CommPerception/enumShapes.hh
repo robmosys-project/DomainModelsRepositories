@@ -13,10 +13,10 @@
 // Please do not modify this file. It will be re-generated
 // running the code generator.
 //--------------------------------------------------------------------------
-#ifndef COMMOBJECTRECOGNITIONOBJECTS_COLORS_ENUM_H_
-#define COMMOBJECTRECOGNITIONOBJECTS_COLORS_ENUM_H_
+#ifndef COMMPERCEPTION_SHAPES_ENUM_H_
+#define COMMPERCEPTION_SHAPES_ENUM_H_
 
-#include <CommObjectRecognitionObjects/enumColorsData.hh>
+#include <CommPerception/enumShapesData.hh>
 
 #include <string>
 #include <iostream>
@@ -24,46 +24,45 @@
 // SmartUtils used in from_xml method
 #include "smartKnuthMorrisPratt.hh"
 
-namespace CommObjectRecognitionObjects {
+namespace CommPerception {
 	
-	class Colors {
+	class Shapes {
 	private:
-		CommObjectRecognitionObjectsIDL::Colors value;
+		CommPerceptionIDL::Shapes value;
 		
 	public:
-		enum ENUM_Colors {
+		enum ENUM_Shapes {
 			ENUM_VALUE_UNDEFINED = 0,
 			UNDEFINED = 1,
-			RED = 2,
-			BLUE = 3,
-			WHITE = 4,
-			GRAY = 5
+			SPHERE = 2,
+			CUBE = 3,
+			CYLINDER = 4
 		};
 		
 		// default constructor
-		Colors() { 
+		Shapes() { 
 			value = ENUM_VALUE_UNDEFINED;
 		}
 		
 		// copy constructor for enum type
-		Colors(ENUM_Colors e) {
+		Shapes(ENUM_Shapes e) {
 			value = static_cast<int>(e);
 		}
 		
 		// copy constructor for IDL type
-		Colors(CommObjectRecognitionObjectsIDL::Colors e) {
+		Shapes(CommPerceptionIDL::Shapes e) {
 			value = e;
 		}
 		
-		//const CommObjectRecognitionObjectsIDL::Colors& get() const { return value; }
+		//const CommPerceptionIDL::Shapes& get() const { return value; }
 		
 		// ENUM operator
-		operator ENUM_Colors() const {
-			return static_cast<ENUM_Colors>(value);
+		operator ENUM_Shapes() const {
+			return static_cast<ENUM_Shapes>(value);
 		}
 		
 		// compare operator
-		bool operator == (const ENUM_Colors t) const {
+		bool operator == (const ENUM_Shapes t) const {
 			return this->value == t;
 		}
 		
@@ -71,19 +70,16 @@ namespace CommObjectRecognitionObjects {
 			std::string result = "";
 			switch (value) {
 				case UNDEFINED:
-					result = "Colors::UNDEFINED";
+					result = "Shapes::UNDEFINED";
 					break;
-				case RED:
-					result = "Colors::RED";
+				case SPHERE:
+					result = "Shapes::SPHERE";
 					break;
-				case BLUE:
-					result = "Colors::BLUE";
+				case CUBE:
+					result = "Shapes::CUBE";
 					break;
-				case WHITE:
-					result = "Colors::WHITE";
-					break;
-				case GRAY:
-					result = "Colors::GRAY";
+				case CYLINDER:
+					result = "Shapes::CYLINDER";
 					break;
 				default:
 					result = "ENUM_VALUE_UNDEFINED";
@@ -112,7 +108,7 @@ namespace CommObjectRecognitionObjects {
 	
 	};
 	
-	inline std::ostream &operator<<(std::ostream &os, const Colors &e)
+	inline std::ostream &operator<<(std::ostream &os, const Shapes &e)
 	{
 		e.to_ostream(os);
 		return os;

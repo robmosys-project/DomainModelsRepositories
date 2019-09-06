@@ -1,0 +1,77 @@
+#import CommBasicObjects.*;
+#import CommObjectRecognitionObjects.*;
+
+CommObjectsRepository CommPerception version 1.0 {
+
+	CommObject CommInfDetection {
+		shape: Shape
+		color: Color
+		roi: ROI
+	}
+	
+	CommObject CommObjectRecognitionObjectProperties {
+		is_valid: Boolean= false
+		object_id: UInt32
+		object_type: String
+		pose: CommPose3d
+		dimension: CommPosition3d
+		beliefs: CommObjectBelief[*]
+		mesh: CommTriMesh
+		relations: CommObjectRelation[*]
+		fill_level: Double= -1.0
+		/*
+		 * "Used for grasping at an surface of the object"
+		 */
+		objectSurfacePoses : CommPose3d[*]
+	}
+	
+	
+	CommObject Shape {
+		name: Shapes = UNDEFINED
+	}	
+	
+	Enumeration Shapes {
+		UNDEFINED
+		SPHERE
+		CUBE
+		CYLINDER
+	}		 
+	
+	CommObject Color {
+		//TODO with multiple ranges
+		name: Colors
+		min_range: HSVSpace
+		max_range: HSVSpace
+	}	
+	Enumeration Colors {
+		UNDEFINED
+		RED
+		BLUE
+		WHITE
+		GRAY
+	}	
+	CommObject BGRSpace {
+		b: Double = 0.0
+		g: Double = 0.0
+		r: Double = 0.0
+	}
+	CommObject HSVSpace {
+		//OpenCV range : H: 0 - 180, S: 0 - 255, V: 0 - 255
+		h: Double = 0.0
+		s: Double = 0.0
+		v: Double = 0.0
+	}
+	
+	CommObject ROI {
+		point: CommPoint2d
+		width: Double = 0.0
+		height: Double = 0.0
+	}
+	
+	CommObject CommPoint2d {
+		x: Double = 0.0
+		y: Double = 0.0
+	}
+	
+	
+}
