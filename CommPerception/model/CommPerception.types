@@ -9,20 +9,17 @@ CommObjectsRepository CommPerception version 1.0 {
 		roi: ROI
 	}
 	
-	CommObject CommObjectRecognitionObjectProperties {
+	CommObject CommObjectProperties {
 		is_valid: Boolean= false
 		object_id: UInt32
 		object_type: String
 		pose: CommPose3d
-		dimension: CommPosition3d
-		beliefs: CommObjectBelief[*]
-		mesh: CommTriMesh
 		relations: CommObjectRelation[*]
 		fill_level: Double= -1.0
 		/*
 		 * "Used for grasping at an surface of the object"
 		 */
-		objectSurfacePoses : CommPose3d[*]
+		surface_poses : CommPose3d[*]
 	}
 	
 	

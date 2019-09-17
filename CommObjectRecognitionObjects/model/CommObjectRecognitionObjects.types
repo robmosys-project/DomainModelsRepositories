@@ -107,24 +107,6 @@ CommObjectsRepository CommObjectRecognitionObjects version 1.0 {
 		relatedObjectId: UInt32
 	}
 	
-	CommObject CommObjectRecognitionInformation {
-		id: UInt32
-		roi: ROI
-		color: Color
-		shape: Shape
-	}
-
-	CommObject CommInfDetection {
-		shape: Shape
-		color: Color
-		roi: ROI
-	}
-	
-	CommObject CommColorDetection {
-		color: Color
-		roi: ROI
-	}
-	
 
 	
 }

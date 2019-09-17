@@ -4,7 +4,7 @@ ServiceDefRepository CommPerception version 1.0 {
 	RequestAnswerServiceDefinition ObjectQueryService {
 		QueryPattern <
 			RequestType = CommPerception.CommInfDetection
-			AnswerType = CommPerception.CommObjectRecognitionObjectProperties
+			AnswerType = CommPerception.CommObjectProperties
 		>
 	}	
 	

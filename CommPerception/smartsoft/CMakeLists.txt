@@ -37,7 +37,7 @@ SMART_COMMOBJECT_AUTOBUILD_DEPENDENCIES()
 # uncomment the following lines to activate data hash calculation (for debugging purposes)
 #FIND_PACKAGE(Boost REQUIRED)
 #INCLUDE_DIRECTORIES(${Boost_INCLUDE_DIRS})
-SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DENABLE_HASH")
+#SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DENABLE_HASH")
 
 # as communication objects are typically shared on various platforms,
 # it is recommended to limit the external dependencies here as much as possible
