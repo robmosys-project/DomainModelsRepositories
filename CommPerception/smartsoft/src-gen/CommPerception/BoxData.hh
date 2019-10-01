@@ -13,20 +13,21 @@
 // Please do not modify this file. It will be re-generated
 // running the code generator.
 //--------------------------------------------------------------------------
-#ifndef COMMPERCEPTION_COMMOBJECTPROPERTIES_DATA_H_
-#define COMMPERCEPTION_COMMOBJECTPROPERTIES_DATA_H_
+#ifndef COMMPERCEPTION_BOX_DATA_H_
+#define COMMPERCEPTION_BOX_DATA_H_
 
-#include "CommPerception/ObjectCoreData.hh"
+#include "CommBasicObjects/CommPosition3dData.hh"
 
-#include <vector>
 
 namespace CommPerceptionIDL 
 {
-	typedef std::vector<CommPerceptionIDL::ObjectCore> CommObjectProperties_objects_type;
-	struct CommObjectProperties
+	struct Box
 	{
-		CommObjectProperties_objects_type objects;
+		CommBasicObjectsIDL::CommPosition3d p1;
+		CommBasicObjectsIDL::CommPosition3d p2;
+		CommBasicObjectsIDL::CommPosition3d p3;
+		CommBasicObjectsIDL::CommPosition3d p4;
   	};
 };
 
-#endif /* COMMPERCEPTION_COMMOBJECTPROPERTIES_DATA_H_ */
+#endif /* COMMPERCEPTION_BOX_DATA_H_ */

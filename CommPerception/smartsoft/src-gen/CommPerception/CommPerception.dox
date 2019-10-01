@@ -9,19 +9,25 @@ Structure of Communication Object:
 \class CommPerception::CommObjectPropertiesCore
 
 Structure of Communication Object:
-- is_valid: Boolean  = false 
-- object_id: UInt32 
-- object_type: String 
-- pose: CommBasicObjects::CommPose3d 
-- relations: CommObjectRecognitionObjects::CommObjectRelation[*] 
-- fill_level: Double  = -1.0 
-- surface_poses: CommBasicObjects::CommPose3d[*] 
-<i> "Used for grasping at an surface of the object" </i>
+- objects: CommPerception::ObjectCore[*] 
 
 \class CommPerception::ShapeCore
 
 Structure of Communication Object:
 - name: CommPerception::Shapes  = UNDEFINED 
+
+\class CommPerception::ObjectCoreCore
+
+Structure of Communication Object:
+- is_valid: Boolean 
+- object_id: UInt32 
+- object_type: String 
+- point2d: CommPerception::CommPoint2d 
+- pose: CommBasicObjects::CommPose3d 
+- relations: CommObjectRecognitionObjects::CommObjectRelation 
+- fill_level: Double  = -1.0 
+- surface_poses: CommBasicObjects::CommPose3d 
+<i> "Used for grasping at an surface of the object" </i>
 
 \class CommPerception::ColorCore
 
@@ -50,6 +56,14 @@ Structure of Communication Object:
 - point: CommPerception::CommPoint2d 
 - width: Double  = 0.0 
 - height: Double  = 0.0 
+
+\class CommPerception::BoxCore
+
+Structure of Communication Object:
+- p1: CommBasicObjects::CommPosition3d 
+- p2: CommBasicObjects::CommPosition3d 
+- p3: CommBasicObjects::CommPosition3d 
+- p4: CommBasicObjects::CommPosition3d 
 
 \class CommPerception::CommPoint2dCore
 
@@ -92,14 +106,7 @@ Class Reference: CommPerception
 Class Reference: CommPerception::CommInfDetectionCore
 <hr>
 @section CommObjectProperties CommObjectProperties
-- is_valid: Boolean   = false 
-- object_id: UInt32  
-- object_type: String  
-- pose: @ref CommPose3d (CommObj) 
-- relations: @ref CommObjectRelation[*] (CommObj) 
-- fill_level: Double   = -1.0 
-- surface_poses: @ref CommPose3d[*] (CommObj) 
-<i> "Used for grasping at an surface of the object" </i>
+- objects: @ref ObjectCore[*] (CommObj) 
 
 Class Reference: CommPerception::CommObjectPropertiesCore
 <hr>
@@ -107,6 +114,19 @@ Class Reference: CommPerception::CommObjectPropertiesCore
 - name: @ref Shapes (Enum)  = UNDEFINED 
 
 Class Reference: CommPerception::ShapeCore
+<hr>
+@section ObjectCore ObjectCore
+- is_valid: Boolean  
+- object_id: UInt32  
+- object_type: String  
+- point2d: @ref CommPoint2d (CommObj) 
+- pose: @ref CommPose3d (CommObj) 
+- relations: @ref CommObjectRelation (CommObj) 
+- fill_level: Double   = -1.0 
+- surface_poses: @ref CommPose3d (CommObj) 
+<i> "Used for grasping at an surface of the object" </i>
+
+Class Reference: CommPerception::ObjectCoreCore
 <hr>
 @section Color Color
 - name: @ref Colors (Enum) 
@@ -135,6 +155,14 @@ Class Reference: CommPerception::HSVSpaceCore
 - height: Double   = 0.0 
 
 Class Reference: CommPerception::ROICore
+<hr>
+@section Box Box
+- p1: @ref CommPosition3d (CommObj) 
+- p2: @ref CommPosition3d (CommObj) 
+- p3: @ref CommPosition3d (CommObj) 
+- p4: @ref CommPosition3d (CommObj) 
+
+Class Reference: CommPerception::BoxCore
 <hr>
 @section CommPoint2d CommPoint2d
 - x: Double   = 0.0 

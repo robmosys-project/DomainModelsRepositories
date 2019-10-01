@@ -10,16 +10,7 @@ CommObjectsRepository CommPerception version 1.0 {
 	}
 	
 	CommObject CommObjectProperties {
-		is_valid: Boolean= false
-		object_id: UInt32
-		object_type: String
-		pose: CommPose3d
-		relations: CommObjectRelation[*]
-		fill_level: Double= -1.0
-		/*
-		 * "Used for grasping at an surface of the object"
-		 */
-		surface_poses : CommPose3d[*]
+		objects: ObjectCore[*]
 	}
 	
 	
@@ -33,13 +24,27 @@ CommObjectsRepository CommPerception version 1.0 {
 		CUBE
 		CYLINDER
 	}		 
-	
+	CommObject ObjectCore {
+		is_valid: Boolean
+		object_id: UInt32
+		object_type: String
+		point2d: CommPoint2d
+		pose: CommPose3d
+		relations: CommObjectRelation
+		fill_level: Double= -1.0
+		/*
+		 * "Used for grasping at an surface of the object"
+		 */
+		surface_poses : CommPose3d
+	}	
+		
 	CommObject Color {
 		//TODO with multiple ranges
 		name: Colors
 		min_range: HSVSpace
 		max_range: HSVSpace
 	}	
+	
 	Enumeration Colors {
 		UNDEFINED
 		RED
@@ -65,6 +70,12 @@ CommObjectsRepository CommPerception version 1.0 {
 		height: Double = 0.0
 	}
 	
+	CommObject Box {
+		p1: CommPosition3d
+		p2: CommPosition3d
+		p3: CommPosition3d
+		p4: CommPosition3d
+	}
 	CommObject CommPoint2d {
 		x: Double = 0.0
 		y: Double = 0.0

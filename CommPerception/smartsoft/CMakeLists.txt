@@ -30,6 +30,8 @@ SMART_COMMOBJECT_AUTOBUILD_DEPENDENCIES()
 ## here you can put all your project-specific compiler configurations          ##
 ## using regular CMake commands (like FIND_PACKAGE, INCLUDE_DIRECTORIES, etc.) ##
 
+add_compile_options(-std=c++11)
+
 # you can add additional smartsoft utilities as follows:
 #SMART_FIND_PACKAGE(SomePackageName)
 #INCLUDE_DIRECTORIES(${SOMEPACKAGENAME_INCLUDE_DIRS})
@@ -38,7 +40,7 @@ SMART_COMMOBJECT_AUTOBUILD_DEPENDENCIES()
 #FIND_PACKAGE(Boost REQUIRED)
 #INCLUDE_DIRECTORIES(${Boost_INCLUDE_DIRS})
 #SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DENABLE_HASH")
-
+SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11" )
 # as communication objects are typically shared on various platforms,
 # it is recommended to limit the external dependencies here as much as possible
 

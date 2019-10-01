@@ -8,6 +8,8 @@ ServiceDefRepository CommPerception version 1.0 {
 		>
 	}	
 	
-	
+	ForkingServiceDefinition ObjectPropertiesPushService {
+		PushPattern<DataType=CommPerception.CommObjectProperties>
+	}
 	
 }

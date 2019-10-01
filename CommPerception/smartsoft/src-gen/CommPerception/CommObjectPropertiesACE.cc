@@ -15,34 +15,17 @@
 //--------------------------------------------------------------------------
 #include "CommPerception/CommObjectPropertiesACE.hh"
 #include <ace/SString.h>
-#include "CommBasicObjects/CommPose3dACE.hh"
-#include "CommObjectRecognitionObjects/CommObjectRelationACE.hh"
+#include "CommPerception/ObjectCoreACE.hh"
 
 // serialization operator for element CommObjectProperties
 ACE_CDR::Boolean operator<<(ACE_OutputCDR &cdr, const CommPerceptionIDL::CommObjectProperties &data)
 {
 	ACE_CDR::Boolean good_bit = true;
-	// serialize list-element is_valid
-	good_bit = good_bit && cdr.write_boolean(data.is_valid);
-	// serialize list-element object_id
-	good_bit = good_bit && cdr.write_ulong(data.object_id);
-	// serialize list-element object_type
-	good_bit = good_bit && cdr << ACE_CString(data.object_type.c_str());
-	// serialize list-element pose
-	good_bit = good_bit && cdr << data.pose;
-	// serialize list-element relations
-	good_bit = good_bit && cdr << ACE_Utils::truncate_cast<ACE_CDR::ULong>(data.relations.size());
-	std::vector<CommObjectRecognitionObjectsIDL::CommObjectRelation>::const_iterator data_relationsIt;
-	for(data_relationsIt=data.relations.begin(); data_relationsIt!=data.relations.end(); data_relationsIt++) {
-		good_bit = good_bit && cdr << *data_relationsIt;
-	}
-	// serialize list-element fill_level
-	good_bit = good_bit && cdr.write_double(data.fill_level);
-	// serialize list-element surface_poses
-	good_bit = good_bit && cdr << ACE_Utils::truncate_cast<ACE_CDR::ULong>(data.surface_poses.size());
-	std::vector<CommBasicObjectsIDL::CommPose3d>::const_iterator data_surface_posesIt;
-	for(data_surface_posesIt=data.surface_poses.begin(); data_surface_posesIt!=data.surface_poses.end(); data_surface_posesIt++) {
-		good_bit = good_bit && cdr << *data_surface_posesIt;
+	// serialize list-element objects
+	good_bit = good_bit && cdr << ACE_Utils::truncate_cast<ACE_CDR::ULong>(data.objects.size());
+	std::vector<CommPerceptionIDL::ObjectCore>::const_iterator data_objectsIt;
+	for(data_objectsIt=data.objects.begin(); data_objectsIt!=data.objects.end(); data_objectsIt++) {
+		good_bit = good_bit && cdr << *data_objectsIt;
 	}
 	
 	return good_bit;
@@ -52,35 +35,14 @@ ACE_CDR::Boolean operator<<(ACE_OutputCDR &cdr, const CommPerceptionIDL::CommObj
 ACE_CDR::Boolean operator>>(ACE_InputCDR &cdr, CommPerceptionIDL::CommObjectProperties &data)
 {
 	ACE_CDR::Boolean good_bit = true;
-	// deserialize type element is_valid
-	good_bit = good_bit && cdr.read_boolean(data.is_valid);
-	// deserialize type element object_id
-	good_bit = good_bit && cdr.read_ulong(data.object_id);
-	// deserialize string-type element object_type
-	ACE_CString data_object_type_str;
-	good_bit = good_bit && cdr >> data_object_type_str;
-	data.object_type = data_object_type_str.c_str();
-	// deserialize type element pose
-	good_bit = good_bit && cdr >> data.pose;
-	// deserialize list-type element relations
-	ACE_CDR::ULong data_relationsNbr;
-	good_bit = good_bit && cdr >> data_relationsNbr;
-	data.relations.clear();
-	CommObjectRecognitionObjectsIDL::CommObjectRelation data_relationsItem;
-	for(ACE_CDR::ULong i=0; i<data_relationsNbr; ++i) {
-		good_bit = good_bit && cdr >> data_relationsItem;
-		data.relations.push_back(data_relationsItem);
-	}
-	// deserialize type element fill_level
-	good_bit = good_bit && cdr.read_double(data.fill_level);
-	// deserialize list-type element surface_poses
-	ACE_CDR::ULong data_surface_posesNbr;
-	good_bit = good_bit && cdr >> data_surface_posesNbr;
-	data.surface_poses.clear();
-	CommBasicObjectsIDL::CommPose3d data_surface_posesItem;
-	for(ACE_CDR::ULong i=0; i<data_surface_posesNbr; ++i) {
-		good_bit = good_bit && cdr >> data_surface_posesItem;
-		data.surface_poses.push_back(data_surface_posesItem);
+	// deserialize list-type element objects
+	ACE_CDR::ULong data_objectsNbr;
+	good_bit = good_bit && cdr >> data_objectsNbr;
+	data.objects.clear();
+	CommPerceptionIDL::ObjectCore data_objectsItem;
+	for(ACE_CDR::ULong i=0; i<data_objectsNbr; ++i) {
+		good_bit = good_bit && cdr >> data_objectsItem;
+		data.objects.push_back(data_objectsItem);
 	}
 	
 	return good_bit;

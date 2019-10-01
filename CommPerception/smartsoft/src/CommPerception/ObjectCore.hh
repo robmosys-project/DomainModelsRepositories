@@ -14,17 +14,17 @@
 // If you want the toolchain to re-generate this file, please 
 // delete it before running the code generator.
 //--------------------------------------------------------------------------
-#ifndef COMMPERCEPTION_COMMOBJECTPROPERTIES_H_
-#define COMMPERCEPTION_COMMOBJECTPROPERTIES_H_
+#ifndef COMMPERCEPTION_OBJECTCORE_H_
+#define COMMPERCEPTION_OBJECTCORE_H_
 
-#include "CommPerception/CommObjectPropertiesCore.hh"
+#include "CommPerception/ObjectCoreCore.hh"
 
 namespace CommPerception {
 		
-class CommObjectProperties : public CommObjectPropertiesCore {
+class ObjectCore : public ObjectCoreCore {
 	public:
 		// default constructors
-		CommObjectProperties();
+		ObjectCore();
 		
 		/**
 		 * Constructor to set all values.
@@ -35,26 +35,26 @@ class CommObjectProperties : public CommObjectPropertiesCore {
 		 *      CommRepository::MyCommObject obj;
 		 *      obj.setX(1).setY(2).setZ(3)...;
 		 */
-		// CommObjectProperties(const std::vector<bool> &is_valid, const std::vector<unsigned int> &object_id, const std::vector<std::string> &object_type, const std::vector<CommPerception::CommPoint2d> &point2d, const std::vector<CommBasicObjects::CommPose3d> &pose, const std::vector<CommObjectRecognitionObjects::CommObjectRelation> &relations, const std::vector<CommBasicObjects::CommPose3d> &surface_poses, const double &fill_level = -1.0);
+		// ObjectCore(const bool &is_valid, const unsigned int &object_id, const std::string &object_type, const CommPerception::CommPoint2d &point2d, const CommBasicObjects::CommPose3d &pose, const CommObjectRecognitionObjects::CommObjectRelation &relations, const CommBasicObjects::CommPose3d &surface_poses, const double &fill_level = -1.0);
 		
-		CommObjectProperties(const CommObjectPropertiesCore &commObjectProperties);
-		CommObjectProperties(const DATATYPE &commObjectProperties);
-		virtual ~CommObjectProperties();
+		ObjectCore(const ObjectCoreCore &objectCore);
+		ObjectCore(const DATATYPE &objectCore);
+		virtual ~ObjectCore();
 		
 		// use framework specific getter and setter methods from core (base) class
-		using CommObjectPropertiesCore::get;
-		using CommObjectPropertiesCore::set;
+		using ObjectCoreCore::get;
+		using ObjectCoreCore::set;
 		
 		//
 		// feel free to add customized methods here
 		//
 };
 
-inline std::ostream &operator<<(std::ostream &os, const CommObjectProperties &co)
+inline std::ostream &operator<<(std::ostream &os, const ObjectCore &co)
 {
 	co.to_ostream(os);
 	return os;
 }
 	
 } /* namespace CommPerception */
-#endif /* COMMPERCEPTION_COMMOBJECTPROPERTIES_H_ */
+#endif /* COMMPERCEPTION_OBJECTCORE_H_ */

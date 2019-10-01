@@ -15,12 +15,12 @@
 // delete it before running the code generator.
 //--------------------------------------------------------------------------
 
-#include "CommPerception/CommObjectProperties.hh"
+#include "CommPerception/ObjectCore.hh"
 
 using namespace CommPerception;
 
-CommObjectProperties::CommObjectProperties()
-:	CommObjectPropertiesCore()
+ObjectCore::ObjectCore()
+:	ObjectCoreCore()
 {  }
 
 
@@ -32,8 +32,8 @@ CommObjectProperties::CommObjectProperties()
  * The preferred way to set values for initialization is:
  *      CommRepository::MyCommObject obj;
  *      obj.setX(1).setY(2).setZ(3)...;
-CommObjectProperties::CommObjectProperties(const std::vector<bool> &is_valid, const std::vector<unsigned int> &object_id, const std::vector<std::string> &object_type, const std::vector<CommPerception::CommPoint2d> &point2d, const std::vector<CommBasicObjects::CommPose3d> &pose, const std::vector<CommObjectRecognitionObjects::CommObjectRelation> &relations, const std::vector<CommBasicObjects::CommPose3d> &surface_poses, const double &fill_level)
-:	CommObjectPropertiesCore() // base constructor sets default values as defined in the model
+ObjectCore::ObjectCore(const bool &is_valid, const unsigned int &object_id, const std::string &object_type, const CommPerception::CommPoint2d &point2d, const CommBasicObjects::CommPose3d &pose, const CommObjectRecognitionObjects::CommObjectRelation &relations, const CommBasicObjects::CommPose3d &surface_poses, const double &fill_level)
+:	ObjectCoreCore() // base constructor sets default values as defined in the model
 {
 	setIs_valid(is_valid);
 	setObject_id(object_id);
@@ -46,13 +46,13 @@ CommObjectProperties::CommObjectProperties(const std::vector<bool> &is_valid, co
 }
  */
 
-CommObjectProperties::CommObjectProperties(const CommObjectPropertiesCore &commObjectProperties)
-:	CommObjectPropertiesCore(commObjectProperties)
+ObjectCore::ObjectCore(const ObjectCoreCore &objectCore)
+:	ObjectCoreCore(objectCore)
 {  }
 
-CommObjectProperties::CommObjectProperties(const DATATYPE &commObjectProperties)
-:	CommObjectPropertiesCore(commObjectProperties)
+ObjectCore::ObjectCore(const DATATYPE &objectCore)
+:	ObjectCoreCore(objectCore)
 {  }
 
-CommObjectProperties::~CommObjectProperties()
+ObjectCore::~ObjectCore()
 {  }

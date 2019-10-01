@@ -17,8 +17,7 @@
 #define COMMPERCEPTION_COMMOBJECTPROPERTIES_CORE_H_
 
 #include "CommPerception/CommObjectPropertiesData.hh"
-#include "CommBasicObjects/CommPose3d.hh"
-#include "CommObjectRecognitionObjects/CommObjectRelation.hh"
+#include "CommPerception/ObjectCore.hh"
 
 #include <iostream>
 #include <string>
@@ -66,111 +65,48 @@ public:
 	
 	// User Interface
 	
-	// getter and setter for element Is_valid
-	inline bool getIs_valid() const { return idl_CommObjectProperties.is_valid; }
-	inline CommObjectPropertiesCore& setIs_valid(const bool &is_valid) { idl_CommObjectProperties.is_valid = is_valid; return *this; }
-	
-	// getter and setter for element Object_id
-	inline unsigned int getObject_id() const { return idl_CommObjectProperties.object_id; }
-	inline CommObjectPropertiesCore& setObject_id(const unsigned int &object_id) { idl_CommObjectProperties.object_id = object_id; return *this; }
-	
-	// getter and setter for element Object_type
-	inline std::string getObject_type() const { return idl_CommObjectProperties.object_type; }
-	inline CommObjectPropertiesCore& setObject_type(const std::string &object_type) { idl_CommObjectProperties.object_type = object_type; return *this; }
-	
-	// getter and setter for element Pose
-	inline CommBasicObjects::CommPose3d getPose() const { return CommBasicObjects::CommPose3d(idl_CommObjectProperties.pose); }
-	inline CommObjectPropertiesCore& setPose(const CommBasicObjects::CommPose3d &pose) { idl_CommObjectProperties.pose = pose; return *this; }
-	
-	// getter and setter for element Relations
+	// getter and setter for element Objects
 	/**
-	 * Getter methods for element idl_CommObjectProperties.relations of type vector<CommObjectRecognitionObjects::CommObjectRelation>
+	 * Getter methods for element idl_CommObjectProperties.objects of type vector<CommPerception::ObjectCore>
 	 */
-	inline std::vector<CommObjectRecognitionObjects::CommObjectRelation> getRelationsCopy() const { 
-		return std::vector<CommObjectRecognitionObjects::CommObjectRelation>(idl_CommObjectProperties.relations.begin(), idl_CommObjectProperties.relations.end());
+	inline std::vector<CommPerception::ObjectCore> getObjectsCopy() const { 
+		return std::vector<CommPerception::ObjectCore>(idl_CommObjectProperties.objects.begin(), idl_CommObjectProperties.objects.end());
 	}
-	inline CommObjectRecognitionObjects::CommObjectRelation getRelationsElemAtPos(const size_t &pos) const {
-		return CommObjectRecognitionObjects::CommObjectRelation(idl_CommObjectProperties.relations[pos]);
+	inline CommPerception::ObjectCore getObjectsElemAtPos(const size_t &pos) const {
+		return CommPerception::ObjectCore(idl_CommObjectProperties.objects[pos]);
 	}
-	inline size_t getRelationsSize() const { return idl_CommObjectProperties.relations.size(); }
-	inline bool isRelationsEmpty() const { return idl_CommObjectProperties.relations.empty(); }
+	inline size_t getObjectsSize() const { return idl_CommObjectProperties.objects.size(); }
+	inline bool isObjectsEmpty() const { return idl_CommObjectProperties.objects.empty(); }
 	/**
-	 * Setter methods for idl_CommObjectProperties.relations of type vector<CommObjectRecognitionObjects::CommObjectRelation>
+	 * Setter methods for idl_CommObjectProperties.objects of type vector<CommPerception::ObjectCore>
 	 */
-	inline CommObjectPropertiesCore& setRelations(const std::vector<CommObjectRecognitionObjects::CommObjectRelation> &relations) { 
-		idl_CommObjectProperties.relations.assign(relations.begin(), relations.end());
+	inline CommObjectPropertiesCore& setObjects(const std::vector<CommPerception::ObjectCore> &objects) { 
+		idl_CommObjectProperties.objects.assign(objects.begin(), objects.end());
 		return *this;
 	}
-	inline bool setRelationsElemAtPos(const size_t &pos, const CommObjectRecognitionObjects::CommObjectRelation &elem) {
-		if(pos < idl_CommObjectProperties.relations.size()) {
-			idl_CommObjectProperties.relations[pos] = elem;
+	inline bool setObjectsElemAtPos(const size_t &pos, const CommPerception::ObjectCore &elem) {
+		if(pos < idl_CommObjectProperties.objects.size()) {
+			idl_CommObjectProperties.objects[pos] = elem;
 			return true;
 		}
 		return false;
 	}
-	inline bool insertRelationsVectorAtPos(const size_t &pos, const std::vector<CommObjectRecognitionObjects::CommObjectRelation> &data) {
-		if(pos < idl_CommObjectProperties.relations.size()) {
-			idl_CommObjectProperties.relations.insert(idl_CommObjectProperties.relations.begin()+pos, data.begin(), data.end());
+	inline bool insertObjectsVectorAtPos(const size_t &pos, const std::vector<CommPerception::ObjectCore> &data) {
+		if(pos < idl_CommObjectProperties.objects.size()) {
+			idl_CommObjectProperties.objects.insert(idl_CommObjectProperties.objects.begin()+pos, data.begin(), data.end());
 			return true;
 		}
 		return false;
 	}
-	inline void resizeRelations(const size_t &size) { idl_CommObjectProperties.relations.resize(size); }
-	inline bool eraseRelationsElemsAtPos(const size_t &pos, const size_t &nbr_elems) {
-		if( (pos+nbr_elems) <= idl_CommObjectProperties.relations.size() ) {
-			idl_CommObjectProperties.relations.erase(idl_CommObjectProperties.relations.begin()+pos, idl_CommObjectProperties.relations.begin()+pos+nbr_elems);
+	inline void resizeObjects(const size_t &size) { idl_CommObjectProperties.objects.resize(size); }
+	inline bool eraseObjectsElemsAtPos(const size_t &pos, const size_t &nbr_elems) {
+		if( (pos+nbr_elems) <= idl_CommObjectProperties.objects.size() ) {
+			idl_CommObjectProperties.objects.erase(idl_CommObjectProperties.objects.begin()+pos, idl_CommObjectProperties.objects.begin()+pos+nbr_elems);
 			return true;
 		}
 		return false;
 	}
-	inline void clearRelations() { idl_CommObjectProperties.relations.clear(); }
-	
-	// getter and setter for element Fill_level
-	inline double getFill_level() const { return idl_CommObjectProperties.fill_level; }
-	inline CommObjectPropertiesCore& setFill_level(const double &fill_level) { idl_CommObjectProperties.fill_level = fill_level; return *this; }
-	
-	// getter and setter for element Surface_poses
-	/**
-	 * Getter methods for element idl_CommObjectProperties.surface_poses of type vector<CommBasicObjects::CommPose3d>
-	 */
-	inline std::vector<CommBasicObjects::CommPose3d> getSurface_posesCopy() const { 
-		return std::vector<CommBasicObjects::CommPose3d>(idl_CommObjectProperties.surface_poses.begin(), idl_CommObjectProperties.surface_poses.end());
-	}
-	inline CommBasicObjects::CommPose3d getSurface_posesElemAtPos(const size_t &pos) const {
-		return CommBasicObjects::CommPose3d(idl_CommObjectProperties.surface_poses[pos]);
-	}
-	inline size_t getSurface_posesSize() const { return idl_CommObjectProperties.surface_poses.size(); }
-	inline bool isSurface_posesEmpty() const { return idl_CommObjectProperties.surface_poses.empty(); }
-	/**
-	 * Setter methods for idl_CommObjectProperties.surface_poses of type vector<CommBasicObjects::CommPose3d>
-	 */
-	inline CommObjectPropertiesCore& setSurface_poses(const std::vector<CommBasicObjects::CommPose3d> &surface_poses) { 
-		idl_CommObjectProperties.surface_poses.assign(surface_poses.begin(), surface_poses.end());
-		return *this;
-	}
-	inline bool setSurface_posesElemAtPos(const size_t &pos, const CommBasicObjects::CommPose3d &elem) {
-		if(pos < idl_CommObjectProperties.surface_poses.size()) {
-			idl_CommObjectProperties.surface_poses[pos] = elem;
-			return true;
-		}
-		return false;
-	}
-	inline bool insertSurface_posesVectorAtPos(const size_t &pos, const std::vector<CommBasicObjects::CommPose3d> &data) {
-		if(pos < idl_CommObjectProperties.surface_poses.size()) {
-			idl_CommObjectProperties.surface_poses.insert(idl_CommObjectProperties.surface_poses.begin()+pos, data.begin(), data.end());
-			return true;
-		}
-		return false;
-	}
-	inline void resizeSurface_poses(const size_t &size) { idl_CommObjectProperties.surface_poses.resize(size); }
-	inline bool eraseSurface_posesElemsAtPos(const size_t &pos, const size_t &nbr_elems) {
-		if( (pos+nbr_elems) <= idl_CommObjectProperties.surface_poses.size() ) {
-			idl_CommObjectProperties.surface_poses.erase(idl_CommObjectProperties.surface_poses.begin()+pos, idl_CommObjectProperties.surface_poses.begin()+pos+nbr_elems);
-			return true;
-		}
-		return false;
-	}
-	inline void clearSurface_poses() { idl_CommObjectProperties.surface_poses.clear(); }
+	inline void clearObjects() { idl_CommObjectProperties.objects.clear(); }
 };
 
 } /* namespace CommPerception */

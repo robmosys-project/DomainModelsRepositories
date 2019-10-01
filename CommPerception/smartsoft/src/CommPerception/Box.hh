@@ -14,17 +14,17 @@
 // If you want the toolchain to re-generate this file, please 
 // delete it before running the code generator.
 //--------------------------------------------------------------------------
-#ifndef COMMPERCEPTION_COMMOBJECTPROPERTIES_H_
-#define COMMPERCEPTION_COMMOBJECTPROPERTIES_H_
+#ifndef COMMPERCEPTION_BOX_H_
+#define COMMPERCEPTION_BOX_H_
 
-#include "CommPerception/CommObjectPropertiesCore.hh"
+#include "CommPerception/BoxCore.hh"
 
 namespace CommPerception {
 		
-class CommObjectProperties : public CommObjectPropertiesCore {
+class Box : public BoxCore {
 	public:
 		// default constructors
-		CommObjectProperties();
+		Box();
 		
 		/**
 		 * Constructor to set all values.
@@ -35,26 +35,26 @@ class CommObjectProperties : public CommObjectPropertiesCore {
 		 *      CommRepository::MyCommObject obj;
 		 *      obj.setX(1).setY(2).setZ(3)...;
 		 */
-		// CommObjectProperties(const std::vector<bool> &is_valid, const std::vector<unsigned int> &object_id, const std::vector<std::string> &object_type, const std::vector<CommPerception::CommPoint2d> &point2d, const std::vector<CommBasicObjects::CommPose3d> &pose, const std::vector<CommObjectRecognitionObjects::CommObjectRelation> &relations, const std::vector<CommBasicObjects::CommPose3d> &surface_poses, const double &fill_level = -1.0);
+		// Box(const CommPerception::CommPoint2d &p1, const CommPerception::CommPoint2d &p2, const CommPerception::CommPoint2d &p3, const CommPerception::CommPoint2d &p4);
 		
-		CommObjectProperties(const CommObjectPropertiesCore &commObjectProperties);
-		CommObjectProperties(const DATATYPE &commObjectProperties);
-		virtual ~CommObjectProperties();
+		Box(const BoxCore &box);
+		Box(const DATATYPE &box);
+		virtual ~Box();
 		
 		// use framework specific getter and setter methods from core (base) class
-		using CommObjectPropertiesCore::get;
-		using CommObjectPropertiesCore::set;
+		using BoxCore::get;
+		using BoxCore::set;
 		
 		//
 		// feel free to add customized methods here
 		//
 };
 
-inline std::ostream &operator<<(std::ostream &os, const CommObjectProperties &co)
+inline std::ostream &operator<<(std::ostream &os, const Box &co)
 {
 	co.to_ostream(os);
 	return os;
 }
 	
 } /* namespace CommPerception */
-#endif /* COMMPERCEPTION_COMMOBJECTPROPERTIES_H_ */
+#endif /* COMMPERCEPTION_BOX_H_ */

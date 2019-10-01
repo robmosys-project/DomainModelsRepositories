@@ -42,12 +42,8 @@ namespace CommPerception
 	{
 		// get own hash value
 		hashes.push_back(getCompiledHash());
-		// get hash value(s) for CommBasicObjects::CommPose3d(idl_CommObjectProperties.pose)
-		CommBasicObjects::CommPose3d::getAllHashValues(hashes);
-		// get hash value(s) for CommObjectRecognitionObjects::CommObjectRelation(idl_CommObjectProperties.relations)
-		CommObjectRecognitionObjects::CommObjectRelation::getAllHashValues(hashes);
-		// get hash value(s) for CommBasicObjects::CommPose3d(idl_CommObjectProperties.surface_poses)
-		CommBasicObjects::CommPose3d::getAllHashValues(hashes);
+		// get hash value(s) for CommPerception::ObjectCore(idl_CommObjectProperties.objects)
+		CommPerception::ObjectCore::getAllHashValues(hashes);
 	}
 	
 	void CommObjectPropertiesCore::checkAllHashValues(std::list<std::string> &hashes)
@@ -65,12 +61,8 @@ namespace CommPerception
 		assert(strcmp(getCompiledHash(), hashes.front().c_str()) == 0);
 		hashes.pop_front();
 		
-		// check hash value(s) for CommBasicObjects::CommPose3d(idl_CommObjectProperties.pose)
-		CommBasicObjects::CommPose3d::checkAllHashValues(hashes);
-		// check hash value(s) for CommObjectRecognitionObjects::CommObjectRelation(idl_CommObjectProperties.relations)
-		CommObjectRecognitionObjects::CommObjectRelation::checkAllHashValues(hashes);
-		// check hash value(s) for CommBasicObjects::CommPose3d(idl_CommObjectProperties.surface_poses)
-		CommBasicObjects::CommPose3d::checkAllHashValues(hashes);
+		// check hash value(s) for CommPerception::ObjectCore(idl_CommObjectProperties.objects)
+		CommPerception::ObjectCore::checkAllHashValues(hashes);
 	}
 	
 	#ifdef ENABLE_HASH
@@ -78,18 +70,9 @@ namespace CommPerception
 	{
 		size_t seed = 0;
 		
-		boost::hash_combine(seed, data.is_valid);
-		boost::hash_combine(seed, data.object_id);
-		boost::hash_combine(seed, std::string(data.object_type.c_str()));
-		seed += CommBasicObjects::CommPose3d::generateDataHash(data.pose);
-		std::vector<CommObjectRecognitionObjectsIDL::CommObjectRelation>::const_iterator data_relationsIt;
-		for(data_relationsIt=data.relations.begin(); data_relationsIt!=data.relations.end(); data_relationsIt++) {
-			seed += CommObjectRecognitionObjects::CommObjectRelation::generateDataHash(*data_relationsIt);
-		}
-		boost::hash_combine(seed, data.fill_level);
-		std::vector<CommBasicObjectsIDL::CommPose3d>::const_iterator data_surface_posesIt;
-		for(data_surface_posesIt=data.surface_poses.begin(); data_surface_posesIt!=data.surface_poses.end(); data_surface_posesIt++) {
-			seed += CommBasicObjects::CommPose3d::generateDataHash(*data_surface_posesIt);
+		std::vector<CommPerceptionIDL::ObjectCore>::const_iterator data_objectsIt;
+		for(data_objectsIt=data.objects.begin(); data_objectsIt!=data.objects.end(); data_objectsIt++) {
+			seed += CommPerception::ObjectCore::generateDataHash(*data_objectsIt);
 		}
 		
 		return seed;
@@ -100,13 +83,7 @@ namespace CommPerception
 	CommObjectPropertiesCore::CommObjectPropertiesCore()
 	:	idl_CommObjectProperties()
 	{  
-		setIs_valid(false);
-		setObject_id(0);
-		setObject_type("");
-		setPose(CommBasicObjects::CommPose3d());
-		setRelations(std::vector<CommObjectRecognitionObjects::CommObjectRelation>());
-		setFill_level(-1.0);
-		setSurface_poses(std::vector<CommBasicObjects::CommPose3d>());
+		setObjects(std::vector<CommPerception::ObjectCore>());
 	}
 	
 	CommObjectPropertiesCore::CommObjectPropertiesCore(const DATATYPE &data)
@@ -119,20 +96,10 @@ namespace CommPerception
 	void CommObjectPropertiesCore::to_ostream(std::ostream &os) const
 	{
 	  os << "CommObjectProperties(";
-	  os << getIs_valid() << " ";
-	  os << getObject_id() << " ";
-	  os << getObject_type() << " ";
-	  getPose().to_ostream(os);
-	  std::vector<CommObjectRecognitionObjects::CommObjectRelation>::const_iterator relationsIt;
-	  std::vector<CommObjectRecognitionObjects::CommObjectRelation> relationsList = getRelationsCopy();
-	  for(relationsIt=relationsList.begin(); relationsIt!=relationsList.end(); relationsIt++) {
-	  	relationsIt->to_ostream(os);
-	  }
-	  os << getFill_level() << " ";
-	  std::vector<CommBasicObjects::CommPose3d>::const_iterator surface_posesIt;
-	  std::vector<CommBasicObjects::CommPose3d> surface_posesList = getSurface_posesCopy();
-	  for(surface_posesIt=surface_posesList.begin(); surface_posesIt!=surface_posesList.end(); surface_posesIt++) {
-	  	surface_posesIt->to_ostream(os);
+	  std::vector<CommPerception::ObjectCore>::const_iterator objectsIt;
+	  std::vector<CommPerception::ObjectCore> objectsList = getObjectsCopy();
+	  for(objectsIt=objectsList.begin(); objectsIt!=objectsList.end(); objectsIt++) {
+	  	objectsIt->to_ostream(os);
 	  }
 	  os << ") ";
 	}
@@ -141,101 +108,38 @@ namespace CommPerception
 	void CommObjectPropertiesCore::to_xml(std::ostream &os, const std::string &indent) const {
 		size_t counter = 0;
 		
-		os << indent << "<is_valid>" << getIs_valid() << "</is_valid>";
-		os << indent << "<object_id>" << getObject_id() << "</object_id>";
-		os << indent << "<object_type>" << getObject_type() << "</object_type>";
-		os << indent << "<pose>";
-		getPose().to_xml(os, indent);
-		os << indent << "</pose>";
-		std::vector<CommObjectRecognitionObjects::CommObjectRelation>::const_iterator relationsIt;
-		std::vector<CommObjectRecognitionObjects::CommObjectRelation> relationsList = getRelationsCopy();
+		std::vector<CommPerception::ObjectCore>::const_iterator objectsIt;
+		std::vector<CommPerception::ObjectCore> objectsList = getObjectsCopy();
 		counter = 0;
-		os << indent << "<relationsList n=\"" << relationsList.size() << "\">";
-		for(relationsIt=relationsList.begin(); relationsIt!=relationsList.end(); relationsIt++) {
-			os << indent << "<relations i=\"" << counter++ << "\">";
-			relationsIt->to_xml(os, indent);
-			os << indent << "</relations>";
+		os << indent << "<objectsList n=\"" << objectsList.size() << "\">";
+		for(objectsIt=objectsList.begin(); objectsIt!=objectsList.end(); objectsIt++) {
+			os << indent << "<objects i=\"" << counter++ << "\">";
+			objectsIt->to_xml(os, indent);
+			os << indent << "</objects>";
 		}
-		os << indent << "</relationsList>";
-		os << indent << "<fill_level>" << getFill_level() << "</fill_level>";
-		std::vector<CommBasicObjects::CommPose3d>::const_iterator surface_posesIt;
-		std::vector<CommBasicObjects::CommPose3d> surface_posesList = getSurface_posesCopy();
-		counter = 0;
-		os << indent << "<surface_posesList n=\"" << surface_posesList.size() << "\">";
-		for(surface_posesIt=surface_posesList.begin(); surface_posesIt!=surface_posesList.end(); surface_posesIt++) {
-			os << indent << "<surface_poses i=\"" << counter++ << "\">";
-			surface_posesIt->to_xml(os, indent);
-			os << indent << "</surface_poses>";
-		}
-		os << indent << "</surface_posesList>";
+		os << indent << "</objectsList>";
 	}
 	
 	// restore from xml stream
 	void CommObjectPropertiesCore::from_xml(std::istream &is) {
 		size_t counter = 0;
 		
-		static const Smart::KnuthMorrisPratt kmp_is_valid("<is_valid>");
-		static const Smart::KnuthMorrisPratt kmp_object_id("<object_id>");
-		static const Smart::KnuthMorrisPratt kmp_object_type("<object_type>");
-		static const Smart::KnuthMorrisPratt kmp_pose("<pose>");
-		static const Smart::KnuthMorrisPratt kmp_relationsList("<relationsList n=\"");
-		static const Smart::KnuthMorrisPratt kmp_relations("\">");
-		static const Smart::KnuthMorrisPratt kmp_fill_level("<fill_level>");
-		static const Smart::KnuthMorrisPratt kmp_surface_posesList("<surface_posesList n=\"");
-		static const Smart::KnuthMorrisPratt kmp_surface_poses("\">");
+		static const Smart::KnuthMorrisPratt kmp_objectsList("<objectsList n=\"");
+		static const Smart::KnuthMorrisPratt kmp_objects("\">");
 		
-		if(kmp_is_valid.search(is)) {
-			bool is_validItem;
-			is >> is_validItem;
-			setIs_valid(is_validItem);
-		}
-		if(kmp_object_id.search(is)) {
-			unsigned int object_idItem;
-			is >> object_idItem;
-			setObject_id(object_idItem);
-		}
-		if(kmp_object_type.search(is)) {
-			std::string object_typeItem;
-			is >> object_typeItem;
-			setObject_type(object_typeItem);
-		}
-		if(kmp_pose.search(is)) {
-			CommBasicObjects::CommPose3d poseItem;
-			poseItem.from_xml(is);
-			setPose(poseItem);
-		}
-		if(kmp_relationsList.search(is)) {
+		if(kmp_objectsList.search(is)) {
 			size_t numberElements;
 			is >> numberElements;
-			CommObjectRecognitionObjects::CommObjectRelation relationsItem;
-			std::vector<CommObjectRecognitionObjects::CommObjectRelation> relationsList;
-			kmp_relations.search(is);
+			CommPerception::ObjectCore objectsItem;
+			std::vector<CommPerception::ObjectCore> objectsList;
+			kmp_objects.search(is);
 			for(counter=0; counter<numberElements; counter++) {
-				if(kmp_relations.search(is)) {
-					relationsItem.from_xml(is);
-					relationsList.push_back(relationsItem);
+				if(kmp_objects.search(is)) {
+					objectsItem.from_xml(is);
+					objectsList.push_back(objectsItem);
 				}
 			}
-			setRelations(relationsList);
-		}
-		if(kmp_fill_level.search(is)) {
-			double fill_levelItem;
-			is >> fill_levelItem;
-			setFill_level(fill_levelItem);
-		}
-		if(kmp_surface_posesList.search(is)) {
-			size_t numberElements;
-			is >> numberElements;
-			CommBasicObjects::CommPose3d surface_posesItem;
-			std::vector<CommBasicObjects::CommPose3d> surface_posesList;
-			kmp_surface_poses.search(is);
-			for(counter=0; counter<numberElements; counter++) {
-				if(kmp_surface_poses.search(is)) {
-					surface_posesItem.from_xml(is);
-					surface_posesList.push_back(surface_posesItem);
-				}
-			}
-			setSurface_poses(surface_posesList);
+			setObjects(objectsList);
 		}
 	}
 	

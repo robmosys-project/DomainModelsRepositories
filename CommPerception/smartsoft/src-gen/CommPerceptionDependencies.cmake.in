@@ -19,6 +19,7 @@ LIST(APPEND CommPerception_DEPENDENCIES SmartXml)
 
 # modelled CommunicationObject-dependencies are added here (if there are any)
 LIST(APPEND CommPerception_DEPENDENCIES CommBasicObjects)
+LIST(APPEND CommPerception_DEPENDENCIES CommBasicObjects)
 LIST(APPEND CommPerception_DEPENDENCIES CommObjectRecognitionObjects)
 
 # these are the dependencies that have been added manually within the CMakeLists.txt file
