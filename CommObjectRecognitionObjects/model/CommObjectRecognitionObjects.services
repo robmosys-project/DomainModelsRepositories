@@ -16,6 +16,30 @@ ServiceDefRepository CommObjectRecognitionObjects version 1.0 {
 		>
 	}
 
+<<<<<<< Updated upstream
+=======
+	RequestAnswerServiceDefinition ColorQueryService {
+		QueryPattern <
+			RequestType = CommObjectRecognitionObjects.CommColorDetection
+			AnswerType = CommObjectRecognitionObjects.CommPoint2d
+		>
+	}
+	
+	RequestAnswerServiceDefinition ObjectQueryService {
+		QueryPattern <
+			RequestType = CommObjectRecognitionObjects.CommInfDetection
+			AnswerType = CommObjectRecognitionObjects.CommObjectRecognitionObjectProperties
+		>
+	}	
+	
+	RequestAnswerServiceDefinition FaceQueryService {
+		QueryPattern <
+			RequestType = CommObjectRecognitionObjects.CommFaceDetection
+			AnswerType = CommObjectRecognitionObjects.CommFaceDetection
+		>
+	}
+	
+>>>>>>> Stashed changes
 	ForkingServiceDefinition ObjectEventService {
 		EventPattern < 
 			ActivationType=CommBasicObjects.CommVoid

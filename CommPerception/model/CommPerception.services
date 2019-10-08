@@ -8,6 +8,13 @@ ServiceDefRepository CommPerception version 1.0 {
 		>
 	}	
 	
+	RequestAnswerServiceDefinition PersonQueryService {
+		QueryPattern <
+			RequestType = CommPerception.Empty
+			AnswerType = CommPerception.CommPersonDetection
+		>
+	} 
+	
 	ForkingServiceDefinition ObjectPropertiesPushService {
 		PushPattern<DataType=CommPerception.CommObjectProperties>
 	}

@@ -9,6 +9,16 @@ CommObjectsRepository CommPerception version 1.0 {
 		roi: ROI
 	}
 	
+	CommObject CommPersonInf {
+		pos: Double = 1.0
+		name: String
+		roi: ROI
+	}
+	
+	CommObject CommPersonDetection {
+		persons: CommPersonInf[*]
+	}
+	
 	CommObject CommObjectProperties {
 		objects: ObjectCore[*]
 	}
@@ -76,9 +86,13 @@ CommObjectsRepository CommPerception version 1.0 {
 		p3: CommPosition3d
 		p4: CommPosition3d
 	}
+	
 	CommObject CommPoint2d {
 		x: Double = 0.0
 		y: Double = 0.0
+	}
+	
+	CommObject Empty {
 	}
 	
 	
