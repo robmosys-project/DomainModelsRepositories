@@ -10,8 +10,8 @@ CommObjectsRepository CommPerception version 1.0 {
 	}
 	
 	CommObject CommPersonInf {
-		pos: Double = 1.0
-		name: String
+		pose: CommPose3d
+		name: String="unknow"
 		roi: ROI
 	}
 	

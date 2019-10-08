@@ -13,5 +13,16 @@
 // Please do not modify this file. It will be re-generated
 // running the code generator.
 //--------------------------------------------------------------------------
+#ifndef COMMPERCEPTION_EMPTY_DATA_H_
+#define COMMPERCEPTION_EMPTY_DATA_H_
 
-// Generated with SmartMDSD Toolchain Version 3.9.0.201904101330
+
+
+namespace CommPerceptionIDL 
+{
+	struct Empty
+	{
+  	};
+};
+
+#endif /* COMMPERCEPTION_EMPTY_DATA_H_ */

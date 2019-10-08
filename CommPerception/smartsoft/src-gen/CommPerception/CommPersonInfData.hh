@@ -13,5 +13,22 @@
 // Please do not modify this file. It will be re-generated
 // running the code generator.
 //--------------------------------------------------------------------------
+#ifndef COMMPERCEPTION_COMMPERSONINF_DATA_H_
+#define COMMPERCEPTION_COMMPERSONINF_DATA_H_
 
-// Generated with SmartMDSD Toolchain Version 3.9.0.201904101330
+#include "CommPerception/ROIData.hh"
+#include "CommBasicObjects/CommPose3dData.hh"
+
+#include <string>
+
+namespace CommPerceptionIDL 
+{
+	struct CommPersonInf
+	{
+		CommBasicObjectsIDL::CommPose3d pose;
+		std::string name;
+		CommPerceptionIDL::ROI roi;
+  	};
+};
+
+#endif /* COMMPERCEPTION_COMMPERSONINF_DATA_H_ */

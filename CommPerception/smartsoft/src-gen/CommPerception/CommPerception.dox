@@ -6,6 +6,18 @@ Structure of Communication Object:
 - color: CommPerception::Color 
 - roi: CommPerception::ROI 
 
+\class CommPerception::CommPersonInfCore
+
+Structure of Communication Object:
+- pose: CommBasicObjects::CommPose3d 
+- name: String  = "unknow" 
+- roi: CommPerception::ROI 
+
+\class CommPerception::CommPersonDetectionCore
+
+Structure of Communication Object:
+- persons: CommPerception::CommPersonInf[*] 
+
 \class CommPerception::CommObjectPropertiesCore
 
 Structure of Communication Object:
@@ -71,6 +83,10 @@ Structure of Communication Object:
 - x: Double  = 0.0 
 - y: Double  = 0.0 
 
+\class CommPerception::EmptyCore
+
+Structure of Communication Object:
+
 \class CommPerception::Shapes
 
 Structure of Enumeration:
@@ -104,6 +120,18 @@ Class Reference: CommPerception
 - roi: @ref ROI (CommObj) 
 
 Class Reference: CommPerception::CommInfDetectionCore
+<hr>
+@section CommPersonInf CommPersonInf
+- pose: @ref CommPose3d (CommObj) 
+- name: String   = "unknow" 
+- roi: @ref ROI (CommObj) 
+
+Class Reference: CommPerception::CommPersonInfCore
+<hr>
+@section CommPersonDetection CommPersonDetection
+- persons: @ref CommPersonInf[*] (CommObj) 
+
+Class Reference: CommPerception::CommPersonDetectionCore
 <hr>
 @section CommObjectProperties CommObjectProperties
 - objects: @ref ObjectCore[*] (CommObj) 
@@ -169,6 +197,10 @@ Class Reference: CommPerception::BoxCore
 - y: Double   = 0.0 
 
 Class Reference: CommPerception::CommPoint2dCore
+<hr>
+@section Empty Empty
+
+Class Reference: CommPerception::EmptyCore
 <hr>
 @section Shapes Shapes
 - UNDEFINED 

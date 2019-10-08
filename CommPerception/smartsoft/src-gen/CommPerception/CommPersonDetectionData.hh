@@ -13,5 +13,20 @@
 // Please do not modify this file. It will be re-generated
 // running the code generator.
 //--------------------------------------------------------------------------
+#ifndef COMMPERCEPTION_COMMPERSONDETECTION_DATA_H_
+#define COMMPERCEPTION_COMMPERSONDETECTION_DATA_H_
 
-// Generated with SmartMDSD Toolchain Version 3.9.0.201904101330
+#include "CommPerception/CommPersonInfData.hh"
+
+#include <vector>
+
+namespace CommPerceptionIDL 
+{
+	typedef std::vector<CommPerceptionIDL::CommPersonInf> CommPersonDetection_persons_type;
+	struct CommPersonDetection
+	{
+		CommPersonDetection_persons_type persons;
+  	};
+};
+
+#endif /* COMMPERCEPTION_COMMPERSONDETECTION_DATA_H_ */
