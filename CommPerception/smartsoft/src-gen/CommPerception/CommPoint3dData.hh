@@ -13,5 +13,19 @@
 // Please do not modify this file. It will be re-generated
 // running the code generator.
 //--------------------------------------------------------------------------
+#ifndef COMMPERCEPTION_COMMPOINT3D_DATA_H_
+#define COMMPERCEPTION_COMMPOINT3D_DATA_H_
 
-// Generated with SmartMDSD Toolchain Version 3.10.0.201908291621
+
+
+namespace CommPerceptionIDL 
+{
+	struct CommPoint3d
+	{
+		double x;
+		double y;
+		double z;
+  	};
+};
+
+#endif /* COMMPERCEPTION_COMMPOINT3D_DATA_H_ */

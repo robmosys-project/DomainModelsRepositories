@@ -83,6 +83,13 @@ Structure of Communication Object:
 - x: Double  = 0.0 
 - y: Double  = 0.0 
 
+\class CommPerception::CommPoint3dCore
+
+Structure of Communication Object:
+- x: Double  = 0.0 
+- y: Double  = 0.0 
+- z: Double  = 0.0 
+
 \class CommPerception::EmptyCore
 
 Structure of Communication Object:
@@ -197,6 +204,13 @@ Class Reference: CommPerception::BoxCore
 - y: Double   = 0.0 
 
 Class Reference: CommPerception::CommPoint2dCore
+<hr>
+@section CommPoint3d CommPoint3d
+- x: Double   = 0.0 
+- y: Double   = 0.0 
+- z: Double   = 0.0 
+
+Class Reference: CommPerception::CommPoint3dCore
 <hr>
 @section Empty Empty
 
