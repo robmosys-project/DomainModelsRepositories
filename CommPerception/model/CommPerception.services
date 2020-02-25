@@ -15,6 +15,13 @@ ServiceDefRepository CommPerception version 1.0 {
 		>
 	} 
 	
+	RequestAnswerServiceDefinition RecognitionQueryService {
+		QueryPattern <
+			RequestType = DomainVision.CommVideoImage
+			AnswerType = CommPerception.CommLabel
+		>
+	}
+	
 	ForkingServiceDefinition ObjectPropertiesPushService {
 		PushPattern<DataType=CommPerception.CommObjectProperties>
 	}

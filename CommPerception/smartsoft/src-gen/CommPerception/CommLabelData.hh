@@ -13,5 +13,18 @@
 // Please do not modify this file. It will be re-generated
 // running the code generator.
 //--------------------------------------------------------------------------
+#ifndef COMMPERCEPTION_COMMLABEL_DATA_H_
+#define COMMPERCEPTION_COMMLABEL_DATA_H_
 
-// Generated with SmartMDSD Toolchain Version 3.12.0.201912041712
+
+#include <string>
+
+namespace CommPerceptionIDL 
+{
+	struct CommLabel
+	{
+		std::string name;
+  	};
+};
+
+#endif /* COMMPERCEPTION_COMMLABEL_DATA_H_ */

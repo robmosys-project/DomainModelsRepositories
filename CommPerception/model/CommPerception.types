@@ -101,5 +101,9 @@ CommObjectsRepository CommPerception version 1.0 {
 	CommObject Empty {
 	}
 	
+	CommObject CommLabel {
+		name: String
+	}
+	
 	
 }

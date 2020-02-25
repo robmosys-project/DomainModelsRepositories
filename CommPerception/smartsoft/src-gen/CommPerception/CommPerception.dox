@@ -94,6 +94,11 @@ Structure of Communication Object:
 
 Structure of Communication Object:
 
+\class CommPerception::CommLabelCore
+
+Structure of Communication Object:
+- name: String 
+
 \class CommPerception::Shapes
 
 Structure of Enumeration:
@@ -215,6 +220,11 @@ Class Reference: CommPerception::CommPoint3dCore
 @section Empty Empty
 
 Class Reference: CommPerception::EmptyCore
+<hr>
+@section CommLabel CommLabel
+- name: String  
+
+Class Reference: CommPerception::CommLabelCore
 <hr>
 @section Shapes Shapes
 - UNDEFINED 
